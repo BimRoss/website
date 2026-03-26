@@ -1,4 +1,5 @@
 import { IBM_Plex_Sans, Syne } from "next/font/google";
+import Script from "next/script";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
@@ -30,7 +31,7 @@ export const metadata = {
     template: "%s · BimRoss",
   },
   description:
-    "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to owner incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.",
+    "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.",
   keywords: [
     "Bittensor",
     "mining",
@@ -43,7 +44,7 @@ export const metadata = {
   openGraph: {
     title: "BimRoss - Bittensor Infrastructure",
     description:
-      "Bittensor infrastructure from miners to owner incentives—Subnet 42, TEE execution, Subnet Signal.",
+      "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.",
     url: siteUrl,
     siteName: "BimRoss",
     locale: "en_US",
@@ -53,7 +54,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "BimRoss - Bittensor Infrastructure",
     description:
-      "Bittensor infrastructure from miners to owner incentives—Subnet 42, TEE execution, Subnet Signal.",
+      "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.",
   },
   robots: {
     index: true,
@@ -66,6 +67,8 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const gaMeasurementID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <html
       lang="en"
@@ -77,6 +80,20 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </ToastProvider>
+        {gaMeasurementID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementID}');`}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );

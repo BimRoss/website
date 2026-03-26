@@ -55,7 +55,7 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-5 font-sans text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg md:leading-relaxed lg:text-xl">
-              We design, operate, and scale Bittensor infrastructure—from miner fleets to owner
+              We design, operate, and scale Bittensor infrastructure—from miner fleets to
               incentive design. We also do everything else.
             </p>
           </div>

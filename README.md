@@ -34,5 +34,11 @@ Repository secrets:
 | `DOCKERHUB_USERNAME` / `DOCKERHUB_TOKEN` | Push images to Docker Hub on tag |
 | `RANCHER_ADMIN_REPO_TOKEN` | PAT with **contents** write to `bimross/rancher-admin` (GitOps bump on tag) |
 
+Repository variable:
+
+| Variable | Value |
+|----------|-------|
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-HV51NLXWKD` |
+
 - Push to `master`: build check runs (image tag `build`).
 - Push a `v*` tag (e.g. `v1.2.3`): pushes semver + `latest` to Docker Hub, then bumps `geeemoney/bimross-website` in [rancher-admin](https://github.com/bimross/rancher-admin) `admin/apps/bimross-website/deployment.yaml` so Fleet picks up the release.
