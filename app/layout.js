@@ -26,7 +26,7 @@ export const metadata = {
     apple: [{ url: "/logo.png", type: "image/png" }],
   },
   title: {
-    default: "BimRoss — Bittensor infrastructure & mining",
+    default: "BimRoss - Bittensor Infrastructure",
     template: "%s · BimRoss",
   },
   description:
@@ -41,7 +41,7 @@ export const metadata = {
     "BimRoss",
   ],
   openGraph: {
-    title: "BimRoss — Bittensor infrastructure & mining",
+    title: "BimRoss - Bittensor Infrastructure",
     description:
       "Bittensor infrastructure from miners to owner incentives—Subnet 42, TEE execution, Subnet Signal.",
     url: siteUrl,
@@ -51,7 +51,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BimRoss — Bittensor infrastructure & mining",
+    title: "BimRoss - Bittensor Infrastructure",
     description:
       "Bittensor infrastructure from miners to owner incentives—Subnet 42, TEE execution, Subnet Signal.",
   },
