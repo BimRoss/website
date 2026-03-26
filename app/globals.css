@@ -19,6 +19,10 @@
 html {
   height: 100%;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 body {
@@ -27,6 +31,9 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: var(--font-ibm-plex), system-ui, sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 * {
@@ -160,8 +167,8 @@ body::after {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: transparent;
+  color: inherit;
 }
 
 /* Hero: staggered entrance (CSS-only, respects motion preferences) */
