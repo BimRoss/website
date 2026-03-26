@@ -279,16 +279,6 @@ body::after {
   }
 }
 
-[data-sonner-toaster].bim-sonner [data-close-button].bim-sonner-close {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  color: #fafafa !important;
-}
-
-[data-sonner-toaster].bim-sonner [data-close-button].bim-sonner-close:hover {
-  background: rgba(255, 255, 255, 0.18) !important;
-}
-
 .hero-brand-llc {
   flex-shrink: 0;
   font-family: var(--font-ibm-plex), ui-sans-serif, system-ui, sans-serif;
