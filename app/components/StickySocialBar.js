@@ -5,8 +5,7 @@ import { socials } from "../data/socials";
 import { EmailSocialLink } from "./EmailSocialLink";
 import { useSiteToast } from "./ToastProvider";
 
-const CALL_TOAST_MESSAGE =
-  "We're an AI company — we don't have a phone line!";
+const CALL_TOAST_MESSAGE = "yeah right, you have enough info";
 
 /**
  * Compact top strip — fixed height so desktop widths don’t inflate the bar
