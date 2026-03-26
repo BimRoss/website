@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <>
       <section
-        className="relative flex min-h-0 flex-1 flex-col justify-center px-5 py-6 md:px-10 md:py-8"
+        className="relative flex min-h-0 flex-1 flex-col justify-center px-5 pb-6 pt-[max(3rem,env(safe-area-inset-top,0px))] md:px-10 md:py-8"
         aria-labelledby="hero-heading"
       >
       <div className="absolute inset-0 z-0">
