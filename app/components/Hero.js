@@ -13,8 +13,9 @@ const productCTAs = [
   { kind: "link", label: "Me", href: "https://grantfoster.dev" },
 ];
 
+/** Dark canvas: low-opacity white + blur reads as frosted glass over the mesh */
 const ctaClassName =
-  "hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5";
+  "hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/28 bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md backdrop-saturate-150 transition hover:border-white/50 hover:from-white/[0.18] hover:via-white/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5";
 
 /** Single-screen hero: mesh + BimRoss story + product CTAs (no page scroll). */
 export function Hero() {
