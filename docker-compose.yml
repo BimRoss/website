@@ -10,7 +10,14 @@ services:
       NODE_ENV: development
       NEXT_TELEMETRY_DISABLED: "1"
       WATCHPACK_POLLING: "true"
+    # node_modules is a named volume (survives rebuilds). `docker-entrypoint-dev.sh`
+    # runs `npm ci` when package-lock.json changes. Full reset:
+    #   docker compose down -v && docker compose up --build
     volumes:
       - .:/app
-      - /app/node_modules
-      - /app/.next
+      - bimross_node_modules:/app/node_modules
+      - bimross_next_cache:/app/.next
+
+volumes:
+  bimross_node_modules:
+  bimross_next_cache:
