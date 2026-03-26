@@ -8,8 +8,7 @@ import { useSiteToast } from "./ToastProvider";
 const CALL_TOAST_MESSAGE = "yeah right, you have enough info";
 
 /**
- * Compact top strip — fixed height so desktop widths don’t inflate the bar
- * (avoid aspect-square cells, which become as tall as they are wide).
+ * Square cells: each column shares row width; height matches width (aspect-square).
  */
 export function StickySocialBar() {
   const { showToast } = useSiteToast();
@@ -18,20 +17,23 @@ export function StickySocialBar() {
     showToast(CALL_TOAST_MESSAGE);
   }, [showToast]);
 
+  const n = socials.length;
+
   return (
     <div
-      className="relative z-[60] flex h-14 w-full shrink-0 border-t border-white/25 bg-gradient-to-b from-white/[0.14] via-white/[0.06] to-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_-8px_32px_rgba(0,0,0,0.35)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:from-white/[0.10] supports-[backdrop-filter]:via-white/[0.05] supports-[backdrop-filter]:to-transparent md:h-16"
+      className="relative z-[60] w-full shrink-0 border-t border-white/25 bg-gradient-to-b from-white/[0.14] via-white/[0.06] to-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_-8px_32px_rgba(0,0,0,0.35)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:from-white/[0.10] supports-[backdrop-filter]:via-white/[0.05] supports-[backdrop-filter]:to-transparent"
     >
-      <nav
-        aria-labelledby="social-heading"
-        className="mx-auto flex h-full w-full max-w-7xl flex-nowrap items-stretch"
-      >
+      <nav aria-labelledby="social-heading" className="mx-auto w-full max-w-7xl">
         <h2 id="social-heading" className="sr-only">
           Social & contact
         </h2>
+        <div
+          className="grid w-full"
+          style={{ gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))` }}
+        >
         {socials.map(({ label, href, action, icon: Icon }) => {
           const className =
-            "group relative flex min-h-[44px] min-w-0 flex-1 basis-0 items-center justify-center border-r border-white/20 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-[background-color,transform] last:border-r-0 hover:bg-white/[0.12] active:scale-[0.98] focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/60 md:min-h-0";
+            "group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-white/20 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-[background-color,transform] last:border-r-0 hover:bg-white/[0.12] active:scale-[0.98] focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/60";
           const icon = (
             <Icon className="size-6 shrink-0 text-white md:size-7" aria-hidden />
           );
@@ -70,6 +72,7 @@ export function StickySocialBar() {
             </a>
           );
         })}
+        </div>
       </nav>
     </div>
   );
