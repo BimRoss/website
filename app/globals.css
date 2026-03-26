@@ -331,3 +331,110 @@ body::after {
     font-size: 1rem;
   }
 }
+
+.social-cell {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.social-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 46%),
+    radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.16), transparent 42%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.social-cell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+  opacity: 0.055;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.social-icon-shell {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(3.55rem, 6vw, 4.9rem);
+  height: clamp(3.55rem, 6vw, 4.9rem);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.18), transparent 58%);
+  box-shadow:
+    0 18px 34px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -8px 20px rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+  backdrop-filter: blur(16px) saturate(1.25);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.social-icon-shell::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(1.2rem - 1px);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.social-icon-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 34%, transparent 66%, rgba(255, 255, 255, 0.12));
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.social-icon {
+  position: relative;
+  z-index: 1;
+  width: clamp(1.3rem, 2.55vw, 2.05rem);
+  height: clamp(1.3rem, 2.55vw, 2.05rem);
+  color: rgba(255, 255, 255, 0.97);
+  filter: drop-shadow(0 1px 10px rgba(255, 255, 255, 0.12));
+}
+
+.social-cell:hover .social-icon-shell,
+.social-cell:focus-visible .social-icon-shell {
+  transform: translateY(-2px) scale(1.03);
+  border-color: rgba(255, 255, 255, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.23), rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.24), transparent 58%);
+  box-shadow:
+    0 22px 42px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -8px 22px rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+  .social-icon-shell {
+    width: clamp(4rem, 5vw, 5.35rem);
+    height: clamp(4rem, 5vw, 5.35rem);
+  }
+
+  .social-icon {
+    width: clamp(1.6rem, 2.15vw, 2.35rem);
+    height: clamp(1.6rem, 2.15vw, 2.35rem);
+  }
+}

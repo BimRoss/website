@@ -33,9 +33,11 @@ export function StickySocialBar() {
         >
         {socials.map(({ label, href, action, icon: Icon }) => {
           const className =
-            "group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-white/25 bg-gradient-to-b from-white/[0.09] to-white/[0.03] shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md backdrop-saturate-150 transition-[background-color,transform,box-shadow] last:border-r-0 hover:from-white/[0.16] hover:to-white/[0.06] active:scale-[0.98] focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/60";
+            "social-cell group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-white/25 bg-gradient-to-b from-white/[0.09] to-white/[0.03] shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md backdrop-saturate-150 transition-[background-color,transform,box-shadow] last:border-r-0 hover:from-white/[0.16] hover:to-white/[0.06] active:scale-[0.98] focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/60";
           const icon = (
-            <Icon className="size-6 shrink-0 text-white md:size-7" aria-hidden />
+            <span className="social-icon-shell" aria-hidden>
+              <Icon className="social-icon shrink-0 text-white" aria-hidden />
+            </span>
           );
 
           if (action === "call") {
