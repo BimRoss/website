@@ -1,6 +1,8 @@
 import { IBM_Plex_Sans, Syne } from "next/font/google";
 import Script from "next/script";
-import { socials } from "./data/socials";
+
+import { JsonLd } from "./components/JsonLd";
+import { buildRootJsonLd } from "./data/site";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
@@ -30,45 +32,7 @@ const siteDescription =
 const ogDescription =
   "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.";
 
-const sameAs = [
-  ...socials.flatMap((entry) =>
-    typeof entry.href === "string" && /^https?:\/\//.test(entry.href)
-      ? [entry.href]
-      : [],
-  ),
-  "https://subnetsignal.com",
-  "https://getinvoicepilot.com",
-  "https://grantfoster.dev",
-];
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: siteUrl,
-      name: siteName,
-      description: siteDescription,
-      publisher: { "@id": `${siteUrl}/#organization` },
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: "BimRoss LLC",
-      url: siteUrl,
-      description: siteDescription,
-      email: "grant@bimross.com",
-      sameAs,
-      founder: {
-        "@type": "Person",
-        name: "Grant Foster",
-        url: "https://grantfoster.dev",
-      },
-    },
-  ],
-};
+const rootJsonLd = buildRootJsonLd();
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -144,15 +108,9 @@ export default function RootLayout({ children }) {
         >
           Skip to main content
         </a>
-        <Script
-          id="ld-json-bimross"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
-        />
+        <JsonLd data={rootJsonLd} />
         <ToastProvider>
-          <div className="relative z-10 flex h-full min-h-0 flex-col overflow-hidden">
+          <div className="relative z-10 flex h-full min-h-0 flex-col overflow-x-hidden overflow-y-auto">
             {children}
           </div>
         </ToastProvider>

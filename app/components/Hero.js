@@ -50,11 +50,10 @@ export function Hero() {
               <span className="sr-only">BimRoss LLC</span>
               <Image
                 src="/logo.png"
-                alt=""
+                alt="BimRoss wordmark"
                 width={522}
                 height={582}
                 priority
-                aria-hidden
                 className="h-20 w-auto shrink-0 sm:h-24 md:h-28 lg:h-32"
               />
               <span
@@ -73,7 +72,10 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="products-scroll pointer-events-auto flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0">
+          <nav
+            aria-label="Products and links"
+            className="products-scroll pointer-events-auto flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
+          >
             {productCTAs.map((cta) => {
               if (cta.kind === "toast") {
                 return (
@@ -99,7 +101,7 @@ export function Hero() {
                 </a>
               );
             })}
-          </div>
+          </nav>
         </div>
       </div>
       </section>

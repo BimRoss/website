@@ -8,6 +8,10 @@
 - https://bimross.com/about
 - https://bimross.com/projects
 
+## Machine-readable JSON (for agents and tools)
+- https://bimross.com/profile.json — organization profile
+- https://bimross.com/projects.json — project directory
+
 ## Identity
 - Name: BimRoss LLC
 - Domain: bimross.com

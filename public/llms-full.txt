@@ -12,6 +12,8 @@ BimRoss LLC is an infrastructure and operations company focused on Bittensor-rel
 - Main site: https://bimross.com
 - About: https://bimross.com/about
 - Projects: https://bimross.com/projects
+- Profile JSON: https://bimross.com/profile.json
+- Projects JSON: https://bimross.com/projects.json
 - Subnet Signal: https://subnetsignal.com
 - Invoice Pilot: https://getinvoicepilot.com
 - Founder profile: https://grantfoster.dev
