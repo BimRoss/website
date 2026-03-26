@@ -1,5 +1,3 @@
-const siteUrl = "https://bimross.com";
-
 /** @returns {import("next").MetadataRoute.Robots} */
 export default function robots() {
   return {
@@ -7,7 +5,7 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: new URL(siteUrl).host,
+    sitemap: "https://bimross.com/sitemap.xml",
+    host: "bimross.com",
   };
 }

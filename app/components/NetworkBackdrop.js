@@ -243,10 +243,12 @@ function proximity(mx, my, px, py, radius, power = 1.35) {
 }
 
 function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
+  const [reduced, setReduced] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
     const fn = () => setReduced(mq.matches);
     mq.addEventListener("change", fn);
     return () => mq.removeEventListener("change", fn);

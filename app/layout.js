@@ -1,5 +1,6 @@
 import { IBM_Plex_Sans, Syne } from "next/font/google";
 import Script from "next/script";
+import { socials } from "./data/socials";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
@@ -19,6 +20,9 @@ const ibmPlex = IBM_Plex_Sans({
 });
 
 const siteUrl = "https://bimross.com";
+const siteName = "BimRoss";
+const siteTitle = "BimRoss - Bittensor Infrastructure";
+const ogImagePath = "/opengraph-image";
 
 const siteDescription =
   "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.";
@@ -27,11 +31,14 @@ const ogDescription =
   "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.";
 
 const sameAs = [
-  siteUrl,
+  ...socials.flatMap((entry) =>
+    typeof entry.href === "string" && /^https?:\/\//.test(entry.href)
+      ? [entry.href]
+      : [],
+  ),
   "https://subnetsignal.com",
   "https://getinvoicepilot.com",
   "https://grantfoster.dev",
-  "https://x.com/subnet_signal",
 ];
 
 const structuredData = {
@@ -41,9 +48,10 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "BimRoss",
+      name: siteName,
       description: siteDescription,
       publisher: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
     },
     {
       "@type": "Organization",
@@ -51,7 +59,13 @@ const structuredData = {
       name: "BimRoss LLC",
       url: siteUrl,
       description: siteDescription,
+      email: "grant@bimross.com",
       sameAs,
+      founder: {
+        "@type": "Person",
+        name: "Grant Foster",
+        url: "https://grantfoster.dev",
+      },
     },
   ],
 };
@@ -61,12 +75,14 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
+  applicationName: siteName,
+  category: "technology",
   icons: {
-    icon: [{ url: "/logo.png", type: "image/png" }],
-    apple: [{ url: "/logo.png", type: "image/png" }],
+    icon: [{ url: "/icon", type: "image/png" }],
+    apple: [{ url: "/icon", type: "image/png" }],
   },
   title: {
-    default: "BimRoss - Bittensor Infrastructure",
+    default: siteTitle,
     template: "%s · BimRoss",
   },
   description: siteDescription,
@@ -80,26 +96,27 @@ export const metadata = {
     "BimRoss",
   ],
   openGraph: {
-    title: "BimRoss - Bittensor Infrastructure",
+    title: siteTitle,
     description: ogDescription,
     url: siteUrl,
-    siteName: "BimRoss",
+    siteName,
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/logo.png",
-        width: 522,
-        height: 582,
-        alt: "BimRoss",
+        url: ogImagePath,
+        width: 1200,
+        height: 630,
+        alt: "BimRoss - Bittensor infrastructure and mining operations",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BimRoss - Bittensor Infrastructure",
+    title: siteTitle,
     description: ogDescription,
-    images: ["/logo.png"],
+    images: [ogImagePath],
+    creator: "@subnet_signal",
   },
   robots: {
     index: true,

@@ -57,6 +57,9 @@ export function Hero() {
                 <span className="hero-brand-llc">LLC</span>
               </span>
             </h1>
+            <p className="mt-3 font-sans text-xs font-medium uppercase tracking-[0.22em] text-zinc-400 md:text-sm">
+              BimRoss LLC
+            </p>
             <p className="mt-5 font-sans text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg md:leading-relaxed lg:text-xl">
               We design, operate, and scale Bittensor infrastructure—from miner fleets to
               incentive design. We also do everything else.
