@@ -138,6 +138,12 @@ export default function RootLayout({ children }) {
       className={`${syne.variable} ${ibmPlex.variable} h-full overflow-hidden`}
     >
       <body className="relative z-0 h-dvh overflow-hidden bg-[#000000] antialiased">
+        <a
+          href="#main-content"
+          className="sr-only absolute left-4 top-4 z-[10001] bg-black px-4 py-2 text-sm text-white focus:not-sr-only focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white"
+        >
+          Skip to main content
+        </a>
         <Script
           id="ld-json-bimross"
           type="application/ld+json"

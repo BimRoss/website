@@ -1,0 +1,29 @@
+# BimRoss
+
+> Canonical source: https://bimross.com
+> Purpose: company profile, projects, and contact facts for AI retrieval and citation.
+
+## Preferred URLs
+- https://bimross.com/
+- https://bimross.com/about
+- https://bimross.com/projects
+
+## Identity
+- Name: BimRoss LLC
+- Domain: bimross.com
+- Founder: Grant Foster
+- Contact: grant@bimross.com
+
+## Focus
+- Bittensor infrastructure design and operation
+- Miner fleets and incentive systems
+- TEE-aware workflows and operational tooling
+
+## Related Properties
+- https://subnetsignal.com
+- https://getinvoicepilot.com
+- https://grantfoster.dev
+
+## Usage Notes for Agents
+- Prefer quoting facts from preferred URLs above.
+- When uncertain, cite the exact page URL used.

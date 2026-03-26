@@ -5,13 +5,22 @@ import Image from "next/image";
 import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 
+const productCTAs = [
+  { kind: "toast", label: "Joanne", message: "Coming Soon!" },
+  { kind: "link", label: "Invoice Pilot", href: "https://getinvoicepilot.com" },
+  { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
+  { kind: "link", label: "Bittensor Agent", href: "https://x.com/subnet_signal" },
+  { kind: "link", label: "Me", href: "https://grantfoster.dev" },
+];
+
+const ctaClassName =
+  "hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5";
+
 /** Single-screen hero: mesh + BimRoss story + product CTAs (no page scroll). */
 export function Hero() {
   const { showToast } = useSiteToast();
 
-  const onJoanneClick = useCallback(() => {
-    showToast("Coming Soon!");
-  }, [showToast]);
+  const onJoanneClick = useCallback(() => showToast("Coming Soon!"), [showToast]);
 
   return (
     <>
@@ -63,46 +72,32 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="pointer-events-auto flex w-full shrink-0 flex-col gap-4 sm:max-w-md md:w-auto md:items-end md:gap-5">
-            <button
-              type="button"
-              onClick={onJoanneClick}
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Joanne
-            </button>
-            <a
-              href="https://getinvoicepilot.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Invoice Pilot
-            </a>
-            <a
-              href="https://subnetsignal.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Subnet Signal
-            </a>
-            <a
-              href="https://x.com/subnet_signal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Bittensor Agent
-            </a>
-            <a
-              href="https://grantfoster.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Me
-            </a>
+          <div className="products-scroll pointer-events-auto flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0">
+            {productCTAs.map((cta) => {
+              if (cta.kind === "toast") {
+                return (
+                  <button
+                    key={cta.label}
+                    type="button"
+                    onClick={onJoanneClick}
+                    className={ctaClassName}
+                  >
+                    {cta.label}
+                  </button>
+                );
+              }
+              return (
+                <a
+                  key={cta.href}
+                  href={cta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={ctaClassName}
+                >
+                  {cta.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
