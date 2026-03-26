@@ -5,7 +5,7 @@ import Image from "next/image";
 import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 
-/** Single-screen hero: mesh + BimRoss story + product CTAs (no page scroll). */
+/** Hero: full-viewport layout; on mobile, product CTAs scroll between story and footer. */
 export function Hero() {
   const { showToast } = useSiteToast();
 
@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <>
       <section
-        className="relative flex min-h-0 flex-1 flex-col justify-center px-5 py-6 md:px-10 md:py-8"
+        className="relative flex min-h-0 flex-1 flex-col justify-start px-5 pt-6 pb-4 md:justify-center md:px-10 md:py-8 md:pb-8"
         aria-labelledby="hero-heading"
       >
       <div className="absolute inset-0 z-0">
@@ -27,9 +27,9 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="pointer-events-none relative z-10 mx-auto w-full max-w-6xl">
-        <div className="hero-reveal flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-12 lg:gap-16">
-          <div className="pointer-events-auto min-w-0 max-w-2xl text-left lg:max-w-3xl">
+      <div className="pointer-events-none relative z-10 mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col md:block md:flex-none">
+        <div className="hero-reveal flex min-h-0 flex-1 flex-col gap-6 md:h-auto md:flex-none md:flex-row md:items-end md:justify-between md:gap-12 md:gap-y-8 lg:gap-16">
+          <div className="pointer-events-auto min-w-0 max-w-2xl shrink-0 text-left lg:max-w-3xl">
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
               Happy automations
             </p>
@@ -60,7 +60,7 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="pointer-events-auto flex w-full shrink-0 flex-col gap-4 sm:max-w-md md:w-auto md:items-end md:gap-5">
+          <div className="products-scroll pointer-events-auto flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0">
             <a
               href="https://subnetsignal.com"
               target="_blank"

@@ -43,19 +43,6 @@ export function DiscordIcon(props) {
   );
 }
 
-/** YouTube — rounded plate + play */
-export function YouTubeIcon(props) {
-  return (
-    <BrandSvg {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.54 12 3.54 12 3.54s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.87.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"
-      />
-    </BrandSvg>
-  );
-}
-
 /** Email — outline envelope (matches stroke weight of prior outline icon at small sizes). */
 export function EmailIcon({ className, strokeWidth = 1.75, ...rest }) {
   return (

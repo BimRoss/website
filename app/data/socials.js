@@ -4,7 +4,6 @@ import {
   PhoneIcon,
   TelegramIcon,
   TwitterXIcon,
-  YouTubeIcon,
 } from "./socialIcons";
 
 export const socials = [
@@ -15,7 +14,6 @@ export const socials = [
     href: "https://discordapp.com/users/449222160687300608",
     icon: DiscordIcon,
   },
-  { label: "YouTube", href: "https://www.youtube.com/@geeeeemoney", icon: YouTubeIcon },
   {
     label: "Email",
     href: "mailto:grant@bimross.com",
