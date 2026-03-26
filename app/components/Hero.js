@@ -9,7 +9,7 @@ import { useSiteToast } from "./ToastProvider";
 export function Hero() {
   const { showToast } = useSiteToast();
 
-  const onJoanneClick = useCallback(() => {
+  const onComingSoonClick = useCallback(() => {
     showToast("Coming Soon!");
   }, [showToast]);
 
@@ -61,21 +61,6 @@ export function Hero() {
           </div>
 
           <div className="pointer-events-auto flex w-full shrink-0 flex-col gap-4 sm:max-w-md md:w-auto md:items-end md:gap-5">
-            <button
-              type="button"
-              onClick={onJoanneClick}
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Joanne
-            </button>
-            <a
-              href="https://getinvoicepilot.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
-            >
-              Invoice Pilot
-            </a>
             <a
               href="https://subnetsignal.com"
               target="_blank"
@@ -91,6 +76,36 @@ export function Hero() {
               className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
             >
               Bittensor Agent
+            </a>
+            <a
+              href="https://getinvoicepilot.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
+            >
+              Invoice Pilot
+            </a>
+            <button
+              type="button"
+              onClick={onComingSoonClick}
+              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
+            >
+              Growth Marketer
+            </button>
+            <button
+              type="button"
+              onClick={onComingSoonClick}
+              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
+            >
+              Joanne
+            </button>
+            <a
+              href="https://grantfoster.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center border border-white/25 bg-gradient-to-br from-white/[0.08] to-transparent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50 shadow-[0_0_0_1px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-white/45 hover:from-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 md:min-w-[14rem] md:px-12 md:py-5"
+            >
+              Me
             </a>
           </div>
         </div>
