@@ -20,8 +20,47 @@ const ibmPlex = IBM_Plex_Sans({
 
 const siteUrl = "https://bimross.com";
 
+const siteDescription =
+  "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.";
+
+const ogDescription =
+  "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.";
+
+const sameAs = [
+  siteUrl,
+  "https://subnetsignal.com",
+  "https://getinvoicepilot.com",
+  "https://grantfoster.dev",
+  "https://x.com/subnet_signal",
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "BimRoss",
+      description: siteDescription,
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "BimRoss LLC",
+      url: siteUrl,
+      description: siteDescription,
+      sameAs,
+    },
+  ],
+};
+
 export const metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [{ url: "/logo.png", type: "image/png" }],
     apple: [{ url: "/logo.png", type: "image/png" }],
@@ -30,8 +69,7 @@ export const metadata = {
     default: "BimRoss - Bittensor Infrastructure",
     template: "%s · BimRoss",
   },
-  description:
-    "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.",
+  description: siteDescription,
   keywords: [
     "Bittensor",
     "mining",
@@ -43,18 +81,25 @@ export const metadata = {
   ],
   openGraph: {
     title: "BimRoss - Bittensor Infrastructure",
-    description:
-      "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.",
+    description: ogDescription,
     url: siteUrl,
     siteName: "BimRoss",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 522,
+        height: 582,
+        alt: "BimRoss",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "BimRoss - Bittensor Infrastructure",
-    description:
-      "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.",
+    description: ogDescription,
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -75,6 +120,13 @@ export default function RootLayout({ children }) {
       className={`${syne.variable} ${ibmPlex.variable} h-full overflow-hidden`}
     >
       <body className="relative z-0 h-dvh overflow-hidden bg-[#000000] antialiased">
+        <Script
+          id="ld-json-bimross"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
         <ToastProvider>
           <div className="relative z-10 flex h-full min-h-0 flex-col overflow-hidden">
             {children}

@@ -35,9 +35,9 @@ export function Hero() {
             </p>
             <h1
               id="hero-heading"
-              aria-label="BimRoss LLC"
               className="font-display mt-5 flex flex-row flex-wrap items-end gap-x-2 gap-y-1 sm:mt-7 sm:flex-nowrap sm:gap-x-3 md:gap-x-4"
             >
+              <span className="sr-only">BimRoss LLC</span>
               <Image
                 src="/logo.png"
                 alt=""
@@ -47,7 +47,10 @@ export function Hero() {
                 aria-hidden
                 className="h-20 w-auto shrink-0 sm:h-24 md:h-28 lg:h-32"
               />
-              <span className="flex items-end gap-1.5 sm:gap-2 md:gap-2.5">
+              <span
+                className="flex items-end gap-1.5 sm:gap-2 md:gap-2.5"
+                aria-hidden
+              >
                 <span className="bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text text-5xl font-semibold leading-[0.95] tracking-tight text-transparent md:text-7xl lg:text-8xl">
                   imRoss
                 </span>

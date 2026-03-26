@@ -167,11 +167,9 @@ body::after {
 /* Hero: staggered entrance (CSS-only, respects motion preferences) */
 @keyframes hero-rise {
   from {
-    opacity: 0;
     transform: translateY(18px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
@@ -182,7 +180,6 @@ body::after {
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-reveal > * {
-    opacity: 0;
     animation: hero-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
