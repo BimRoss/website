@@ -1,29 +1,29 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 
 const productCTAs = [
-  { kind: "toast", label: "Joanne", message: "Coming Soon!" },
-  { kind: "link", label: "Invoice Pilot", href: "https://getinvoicepilot.com" },
   { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
-  { kind: "link", label: "Bittensor Agent", href: "https://x.com/subnet_signal" },
-  { kind: "link", label: "Me", href: "https://grantfoster.dev" },
+  { kind: "link", label: "Subnet Agent", href: "https://x.com/subnet_signal" },
+  { kind: "toast", label: "Thread Pilot", message: "coming soon" },
+  { kind: "link", label: "Invoice Pilot", href: "https://getinvoicepilot.com" },
+  { kind: "toast", label: "Joanne", message: "coming soon" },
+  { kind: "link", label: "Founder", href: "https://grantfoster.dev" },
 ];
 
-/** Dark canvas: low-opacity white + blur reads as frosted glass over the mesh */
+/** Dark canvas: frosted glass — fuller fill + thin white rim */
 const ctaClassName = [
   "hero-cta product-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center px-10 py-4",
-  "border border-white/28 bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-transparent",
-  "shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.12)]",
+  "border border-white/30 bg-gradient-to-br from-white/[0.16] via-white/[0.08] to-white/[0.02]",
+  "shadow-[0_14px_40px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.14)]",
   "backdrop-blur-md backdrop-saturate-150",
   "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50",
-  "transform-gpu scale-100 transition-[transform,border-color,box-shadow,background-color,backdrop-filter,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
-  "hover:border-white/50 hover:from-white/[0.18] hover:via-white/[0.08]",
-  "hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_1px_0_rgba(255,255,255,0.22),0_16px_34px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.2)]",
-  "hover:scale-[1.05] focus-visible:scale-[1.05]",
+  "transform-gpu transition-[transform,border-color,box-shadow,background-color,backdrop-filter,opacity]",
+  "hover:border-white/45 hover:from-white/[0.22] hover:via-white/[0.12]",
+  "hover:shadow-[0_18px_48px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.2)]",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
   "md:min-w-[14rem] md:px-12 md:py-5",
 ].join(" ");
@@ -32,8 +32,6 @@ const ctaClassName = [
 export function Hero() {
   const { showToast } = useSiteToast();
   const networkRef = useRef(null);
-
-  const onJoanneClick = useCallback(() => showToast("Coming Soon!"), [showToast]);
 
   return (
     <>
@@ -105,26 +103,28 @@ export function Hero() {
             {productCTAs.map((cta) => {
               if (cta.kind === "toast") {
                 return (
-                  <button
-                    key={cta.label}
-                    type="button"
-                    onClick={onJoanneClick}
-                    className={ctaClassName}
-                  >
-                    {cta.label}
-                  </button>
+                  <div key={cta.label} className="product-cta-shell">
+                    <button
+                      type="button"
+                      onClick={() => showToast(cta.message)}
+                      className={ctaClassName}
+                    >
+                      {cta.label}
+                    </button>
+                  </div>
                 );
               }
               return (
-                <a
-                  key={cta.href}
-                  href={cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={ctaClassName}
-                >
-                  {cta.label}
-                </a>
+                <div key={cta.href} className="product-cta-shell">
+                  <a
+                    href={cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={ctaClassName}
+                  >
+                    {cta.label}
+                  </a>
+                </div>
               );
             })}
           </nav>

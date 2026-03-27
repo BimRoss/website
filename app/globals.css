@@ -7,6 +7,8 @@
   /* Reserved for a future accent pass */
   --color-accent: #ffffff;
   --color-accent-muted: rgba(255, 255, 255, 0.35);
+  --interactive-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --interactive-duration: 1500ms;
 }
 
 @theme inline {
@@ -58,6 +60,17 @@ body::after {
     #000000;
 }
 
+.network-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.075), transparent 34%),
+    radial-gradient(circle at 62% 58%, rgba(255, 255, 255, 0.05), transparent 42%);
+  opacity: 0.46;
+}
+
 .network-bg {
   position: absolute;
   inset: 0;
@@ -76,13 +89,22 @@ body::after {
 
 .network-edge-pulse {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.45);
-  stroke-width: 1.4;
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-width: calc(1.55 + 1.35 * var(--pulse-near, 0.35));
   stroke-linecap: square;
   stroke-linejoin: miter;
-  stroke-dasharray: 0.4 99.6;
+  stroke-dasharray: 0.95 99.05;
   stroke-dashoffset: 0;
-  opacity: 0.85;
+  opacity: 0.92;
+}
+
+.network-global-edge-wave {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.96);
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  opacity: 0;
+  animation-fill-mode: both;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -90,6 +112,12 @@ body::after {
     animation: networkDrift 36s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
     transform-origin: 50% 50%;
     will-change: transform;
+  }
+
+  .network-backdrop::before {
+    animation: networkAtmosphereBreathe 11s ease-in-out infinite;
+    transform-origin: 50% 50%;
+    will-change: transform, opacity;
   }
 
   .network-edge-pulse {
@@ -105,10 +133,21 @@ body::after {
     animation-duration: 6.5s;
     animation-delay: -2.4s;
   }
+
+  .network-packets {
+    animation: networkPacketBreath 8.8s ease-in-out infinite;
+    transform-origin: 50% 50%;
+    will-change: opacity, transform;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .network-bg {
+    animation: none;
+    transform: none;
+  }
+
+  .network-backdrop::before {
     animation: none;
     transform: none;
   }
@@ -135,12 +174,41 @@ body::after {
   }
 }
 
+@keyframes networkAtmosphereBreathe {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scale(0.985);
+  }
+  50% {
+    opacity: 0.52;
+    transform: scale(1.02);
+  }
+}
+
 @keyframes edgePulse {
   0% {
     stroke-dashoffset: 0;
+    stroke-width: calc(1.55 + 1.35 * var(--pulse-near, 0.35));
+  }
+  50% {
+    stroke-width: calc(2.4 + 2.05 * var(--pulse-near, 0.35));
   }
   100% {
     stroke-dashoffset: -100;
+    stroke-width: calc(1.55 + 1.35 * var(--pulse-near, 0.35));
+  }
+}
+
+@keyframes networkPacketBreath {
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(0.988);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
   }
 }
 
@@ -154,6 +222,24 @@ body::after {
   fill: #ffffff;
   opacity: 0.92;
   filter: url(#nodeBloom);
+}
+
+.network-global-node-wave {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.network-global-node-wave-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-width: 1;
+  opacity: 0;
+}
+
+.network-global-node-wave-core {
+  fill: rgba(255, 255, 255, 0.98);
+  opacity: 0;
+  filter: url(#nodeBloomHot);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -172,6 +258,76 @@ body::after {
     opacity: 0.95;
     stroke: rgba(255, 255, 255, 0.55);
   }
+}
+
+@keyframes networkGlobalEdgeWave {
+  0% {
+    opacity: 0;
+    stroke-width: 1.15;
+  }
+  30% {
+    opacity: var(--network-global-wave-opacity, 0.58);
+    stroke-width: var(--network-global-wave-stroke-width, 3.15);
+  }
+  100% {
+    opacity: 0;
+    stroke-width: 1.15;
+  }
+}
+
+@keyframes networkGlobalNodeWave {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  38% {
+    opacity: var(--network-global-node-opacity, 0.58);
+    transform: scale(var(--network-global-node-ring-scale, 1.7));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes networkGlobalNodeCoreWave {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  32% {
+    opacity: var(--network-global-node-core-opacity, 0.74);
+    transform: scale(var(--network-global-node-core-scale, 1.35));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.network-global-edge-wave {
+  animation-name: networkGlobalEdgeWave;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.network-global-node-wave-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: networkGlobalNodeWave;
+  animation-duration: inherit;
+  animation-delay: inherit;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+.network-global-node-wave-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: networkGlobalNodeCoreWave;
+  animation-duration: inherit;
+  animation-delay: inherit;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
 }
 
 .network-packet {
@@ -360,18 +516,37 @@ body::after {
 
 .social-cell {
   isolation: isolate;
+  transform: scale(1);
+  transform-origin: center;
+  will-change: transform;
   background: linear-gradient(
     to bottom right,
-    rgba(8, 8, 8, 0.34),
-    rgba(8, 8, 8, 0.22),
-    rgba(8, 8, 8, 0.12)
+    rgba(8, 8, 8, 0.38),
+    rgba(8, 8, 8, 0.24),
+    rgba(8, 8, 8, 0.14)
   );
-  -webkit-backdrop-filter: blur(4px) saturate(1.1);
-  backdrop-filter: blur(4px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.12);
+  backdrop-filter: blur(10px) saturate(1.12);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 12px 32px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.social-cell,
+.social-icon-shell,
+.social-icon,
+.product-cta {
+  transition:
+    transform var(--interactive-duration) var(--interactive-ease),
+    border-color var(--interactive-duration) var(--interactive-ease),
+    box-shadow var(--interactive-duration) var(--interactive-ease),
+    opacity var(--interactive-duration) var(--interactive-ease),
+    filter var(--interactive-duration) var(--interactive-ease),
+    background-color var(--interactive-duration) var(--interactive-ease),
+    background-image var(--interactive-duration) var(--interactive-ease),
+    backdrop-filter var(--interactive-duration) var(--interactive-ease),
+    -webkit-backdrop-filter var(--interactive-duration) var(--interactive-ease);
 }
 
 .social-icon-shell {
@@ -400,23 +575,25 @@ body::after {
 
 .social-cell:hover,
 .social-cell:focus-visible {
-  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.12);
+  border-color: rgba(255, 255, 255, 0.38);
   background: linear-gradient(
     to bottom right,
-    rgba(14, 14, 14, 0.44),
+    rgba(14, 14, 14, 0.46),
     rgba(14, 14, 14, 0.3),
     rgba(14, 14, 14, 0.18)
   );
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+    0 0 0 1px rgba(255, 255, 255, 0.22),
+    0 16px 40px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 @media (min-width: 768px) {
+  /* Desktop footer strip (5.5rem row): icon caps sized for the shorter bar */
   .social-icon {
-    width: clamp(1.6rem, 2.15vw, 2.35rem);
-    height: clamp(1.6rem, 2.15vw, 2.35rem);
+    width: clamp(1.35rem, 1.4vw, 1.7rem);
+    height: clamp(1.35rem, 1.4vw, 1.7rem);
   }
 }
 
@@ -438,31 +615,62 @@ body::after {
   }
 }
 
+.product-cta-shell {
+  display: flex;
+  width: 100%;
+  overflow: visible;
+}
+
+.product-cta-shell > .product-cta {
+  width: 100%;
+}
+
+.product-cta {
+  transform: scale(1);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.product-cta:hover,
+.product-cta:focus-visible {
+  transform: scale(1.12);
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .products-reveal > .product-cta {
+  .products-reveal > .product-cta-shell {
     opacity: 0;
     animation: productFadeInOrganic 1.35s cubic-bezier(0.2, 0.82, 0.22, 1) forwards;
   }
 
-  .products-reveal > .product-cta:nth-child(1) {
+  .products-reveal > .product-cta-shell:nth-child(1) {
     animation-delay: 0.34s;
   }
-  .products-reveal > .product-cta:nth-child(2) {
+  .products-reveal > .product-cta-shell:nth-child(2) {
     animation-delay: 0.54s;
   }
-  .products-reveal > .product-cta:nth-child(3) {
+  .products-reveal > .product-cta-shell:nth-child(3) {
     animation-delay: 0.75s;
   }
-  .products-reveal > .product-cta:nth-child(4) {
+  .products-reveal > .product-cta-shell:nth-child(4) {
     animation-delay: 0.96s;
   }
-  .products-reveal > .product-cta:nth-child(5) {
+  .products-reveal > .product-cta-shell:nth-child(5) {
     animation-delay: 1.16s;
   }
-  .products-reveal > .product-cta:nth-child(6) {
+  .products-reveal > .product-cta-shell:nth-child(6) {
     animation-delay: 1.32s;
   }
-  .products-reveal > .product-cta:nth-child(7) {
+  .products-reveal > .product-cta-shell:nth-child(7) {
     animation-delay: 1.46s;
+  }
+}
+
+@media (min-width: 768px) {
+  .product-cta-shell {
+    width: auto;
+  }
+
+  .product-cta-shell > .product-cta {
+    width: auto;
   }
 }

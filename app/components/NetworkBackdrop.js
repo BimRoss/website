@@ -22,8 +22,7 @@ const GRID_MAX_Y = VIEW_H - 72;
 const CENTER_X = VIEW_W / 2;
 const CENTER_Y = VIEW_H / 2;
 const CENTER_MAX_DISTANCE = Math.hypot(CENTER_X, CENTER_Y);
-const INTRO_DURATION_MS = 920;
-const GLOBAL_PULSE_DURATION_MS = 1680;
+const INTRO_DURATION_MS = 1840;
 
 /** Parse M/L polyline d-string → centroid of vertices */
 function pathCentroid(d) {
@@ -305,6 +304,8 @@ function generateMesh({ cols, rows, seed }) {
     edgeVertices,
     edgeCentroids,
     pulsePathIndices,
+    xs,
+    ys,
   };
 }
 
@@ -434,10 +435,104 @@ function nearestPathIndicesByPolylineDistance(sx, sy, count, edgeVertices) {
   return out;
 }
 
-const CLICK_BURST_PATHS = 1;
+function nearestGridVertex(sx, sy, xs, ys) {
+  let best = Infinity;
+  let vx = xs[0] ?? 0;
+  let vy = ys[0] ?? 0;
+  for (let r = 0; r < ys.length; r++) {
+    for (let c = 0; c < xs.length; c++) {
+      const d = Math.hypot(sx - xs[c], sy - ys[r]);
+      if (d < best) {
+        best = d;
+        vx = xs[c];
+        vy = ys[r];
+      }
+    }
+  }
+  return { vx, vy };
+}
+
+function vertexIndexOnPolyline(verts, vx, vy) {
+  for (let i = 0; i < verts.length; i++) {
+    if (pointsClose(verts[i], { x: vx, y: vy })) return i;
+  }
+  return -1;
+}
+
+/** Map segment delta to N/E/S/W; null if too diagonal for this jittered grid. */
+function cardinalDir(dx, dy) {
+  if (Math.abs(dx) >= Math.abs(dy) * 1.15) {
+    if (Math.abs(dy) > Math.abs(dx) * 0.95) return null;
+    if (dx > 0.05) return "right";
+    if (dx < -0.05) return "left";
+    return null;
+  }
+  if (Math.abs(dy) >= Math.abs(dx) * 1.15) {
+    if (Math.abs(dx) > Math.abs(dy) * 0.95) return null;
+    if (dy > 0.05) return "down";
+    if (dy < -0.05) return "up";
+    return null;
+  }
+  return null;
+}
+
+/**
+ * Up to four bursts from the nearest grid vertex — one per cardinal direction
+ * along any incident edge (fewer if degree < 4 or lines missing).
+ */
+function collectCardinalBurstPaths(vx, vy, edgeVertices) {
+  const emitted = new Set();
+  const out = [];
+
+  const tryAdd = (dir, pts) => {
+    if (pts.length < 2 || polylineLength(pts) < 1.5) return;
+    const d = polylineToD(pts);
+    if (!d) return;
+    if (emitted.has(dir)) return;
+    emitted.add(dir);
+    out.push(d);
+  };
+
+  for (const verts of edgeVertices) {
+    const i = vertexIndexOnPolyline(verts, vx, vy);
+    if (i < 0) continue;
+
+    if (i + 1 < verts.length) {
+      const dx = verts[i + 1].x - verts[i].x;
+      const dy = verts[i + 1].y - verts[i].y;
+      const dir = cardinalDir(dx, dy);
+      if (dir) {
+        const pts = buildForwardPoints(verts, { x: vx, y: vy }, i);
+        tryAdd(dir, pts);
+      }
+    }
+    if (i > 0) {
+      const dx = verts[i - 1].x - verts[i].x;
+      const dy = verts[i - 1].y - verts[i].y;
+      const dir = cardinalDir(dx, dy);
+      if (dir) {
+        const pts = buildBackwardPoints(verts, { x: vx, y: vy }, i);
+        tryAdd(dir, pts);
+      }
+    }
+  }
+
+  return out;
+}
+
 const CLICK_BURST_WAVES = 1;
 const CLICK_BURST_DUR_S = 2.05;
 const CLICK_BURST_CLEANUP_MS = 3400;
+const MAX_ACTIVE_CLICK_BURSTS = 4;
+const GLOBAL_PULSE_CLEANUP_MS = 3800;
+const MAX_ACTIVE_GLOBAL_PULSES = 2;
+const GLOBAL_PULSE_TRAVEL_S = 0.88;
+const GLOBAL_EDGE_PULSE_DUR_S = 1.56;
+const GLOBAL_NODE_PULSE_DUR_S = 1.8;
+
+function createTransientId() {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
 
 /** 0 = far, 1 = at cursor; smooth falloff */
 function proximity(mx, my, px, py, radius, power = 1.35) {
@@ -451,26 +546,23 @@ function introReveal(progress, distNorm, lag = 0.62, span = 0.34) {
   return clamp(raw, 0, 1);
 }
 
-function heartbeatEnvelope(t) {
-  const sq = (n) => n * n;
-  const a = Math.exp(-sq((t - 0.2) / 0.09));
-  const b = Math.exp(-sq((t - 0.46) / 0.12));
-  const tail = Math.exp(-sq((t - 0.78) / 0.24));
-  return clamp(a * 0.95 + b * 0.72 + tail * 0.22, 0, 1.4);
-}
-
-function radialWave(distNorm, t) {
-  const front = t * 1.14;
-  const width = 0.24;
-  return clamp(1 - Math.abs(distNorm - front) / width, 0, 1);
-}
-
 function farthestDistanceFromPoint(x, y) {
   const d1 = Math.hypot(x, y);
   const d2 = Math.hypot(VIEW_W - x, y);
   const d3 = Math.hypot(x, VIEW_H - y);
   const d4 = Math.hypot(VIEW_W - x, VIEW_H - y);
   return Math.max(d1, d2, d3, d4);
+}
+
+function pulseDelaySeconds(pulse, x, y) {
+  const dist = Math.hypot(x - pulse.sx, y - pulse.sy);
+  return (dist / Math.max(1, pulse.maxDist)) * GLOBAL_PULSE_TRAVEL_S;
+}
+
+function pulseIntensity(pulse, x, y) {
+  const dist = Math.hypot(x - pulse.sx, y - pulse.sy);
+  const distNorm = clamp(dist / Math.max(1, pulse.maxDist), 0, 1);
+  return 0.42 + 0.58 * Math.pow(1 - distNorm, 0.72);
 }
 
 function usePrefersReducedMotion() {
@@ -513,12 +605,12 @@ function ClickBurstWave({ d, wave, pathOrder, burstKey }) {
     return () => window.clearTimeout(t);
   }, [burstKey, staggerS, d, wave, pathOrder]);
 
-  const r = 2.4 + wave * 0.35;
+  const r = 3.35 + wave * 0.52;
 
   return (
     <circle
       r={r}
-      fill="#ffffff"
+      fill="#111111"
       filter="url(#nodeBloom)"
       opacity={0}
     >
@@ -545,6 +637,7 @@ function ClickBurstWave({ d, wave, pathOrder, burstKey }) {
 
 const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
   const containerRef = useRef(null);
+  const cleanupTimersRef = useRef([]);
   const pendingRef = useRef(null);
   const rafRef = useRef(0);
   const reducedMotion = usePrefersReducedMotion();
@@ -561,8 +654,7 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
 
   /** One-shot click bursts: nodes racing along nearest tracks */
   const [clickBursts, setClickBursts] = useState([]);
-  const [globalPulse, setGlobalPulse] = useState(null);
-  const [globalPulseT, setGlobalPulseT] = useState(1);
+  const [globalPulses, setGlobalPulses] = useState([]);
 
   useEffect(() => {
     const updateDensity = () => {
@@ -576,18 +668,20 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
 
   useEffect(() => {
     if (reducedMotion) {
-      setIntroProgress(1);
-      return;
+      const raf = requestAnimationFrame(() => setIntroProgress(1));
+      return () => cancelAnimationFrame(raf);
     }
     let raf = 0;
     const start = performance.now();
+    let firstFrame = true;
     const tick = (now) => {
-      const t = clamp((now - start) / INTRO_DURATION_MS, 0, 1);
+      const elapsed = firstFrame ? 0 : now - start;
+      firstFrame = false;
+      const t = clamp(elapsed / INTRO_DURATION_MS, 0, 1);
       const eased = 1 - Math.pow(1 - t, 3);
       setIntroProgress(eased);
       if (t < 1) raf = requestAnimationFrame(tick);
     };
-    setIntroProgress(0);
     raf = requestAnimationFrame(tick);
     return () => {
       if (raf) cancelAnimationFrame(raf);
@@ -595,24 +689,12 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
   }, [reducedMotion, density.bucket]);
 
   useEffect(() => {
-    if (!globalPulse || reducedMotion) return;
-    let raf = 0;
-    const start = performance.now();
-    const tick = (now) => {
-      const t = clamp((now - start) / GLOBAL_PULSE_DURATION_MS, 0, 1);
-      setGlobalPulseT(t);
-      if (t < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        setGlobalPulse(null);
-      }
-    };
-    setGlobalPulseT(0);
-    raf = requestAnimationFrame(tick);
     return () => {
-      if (raf) cancelAnimationFrame(raf);
+      cleanupTimersRef.current.forEach((timeoutId) => {
+        window.clearTimeout(timeoutId);
+      });
     };
-  }, [globalPulse, reducedMotion]);
+  }, []);
 
   const mesh = useMemo(
     () =>
@@ -624,33 +706,72 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
     [density, meshSeed],
   );
 
-  const { edgePaths, nodePoints, edgeVertices, edgeCentroids, pulsePathIndices } =
-    mesh;
+  const {
+    edgePaths,
+    nodePoints,
+    edgeVertices,
+    edgeCentroids,
+    pulsePathIndices,
+    xs,
+    ys,
+  } = mesh;
+
+  const queueCleanup = useCallback((callback, delayMs) => {
+    const timeoutId = window.setTimeout(() => {
+      cleanupTimersRef.current = cleanupTimersRef.current.filter(
+        (id) => id !== timeoutId,
+      );
+      callback();
+    }, delayMs);
+    cleanupTimersRef.current.push(timeoutId);
+  }, []);
 
   const enqueueBurst = useCallback(
     (sx, sy) => {
       if (reducedMotion) return;
-      const pulseId = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-      setGlobalPulse({
-        id: pulseId,
-        sx,
-        sy,
-        maxDist: farthestDistanceFromPoint(sx, sy),
-      });
-      const indices = nearestPathIndicesByPolylineDistance(
-        sx,
-        sy,
-        CLICK_BURST_PATHS,
-        edgeVertices,
-      );
-      if (indices.length === 0) return;
-      const id = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-      setClickBursts((prev) => [...prev, { id, indices, sx, sy }]);
-      window.setTimeout(() => {
+      const pulseId = createTransientId();
+      setGlobalPulses((prev) => [
+        ...prev.slice(-(MAX_ACTIVE_GLOBAL_PULSES - 1)),
+        {
+          id: pulseId,
+          sx,
+          sy,
+          maxDist: farthestDistanceFromPoint(sx, sy),
+        },
+      ]);
+      queueCleanup(() => {
+        setGlobalPulses((prev) => prev.filter((pulse) => pulse.id !== pulseId));
+      }, GLOBAL_PULSE_CLEANUP_MS);
+      const { vx, vy } = nearestGridVertex(sx, sy, xs, ys);
+      let paths = collectCardinalBurstPaths(vx, vy, edgeVertices);
+      if (paths.length === 0) {
+        const indices = nearestPathIndicesByPolylineDistance(
+          sx,
+          sy,
+          1,
+          edgeVertices,
+        );
+        if (indices.length === 0) return;
+        const d = burstPathFromClick(
+          sx,
+          sy,
+          indices[0],
+          edgeVertices,
+          edgePaths,
+        );
+        paths = d ? [d] : [];
+      }
+      if (paths.length === 0) return;
+      const id = createTransientId();
+      setClickBursts((prev) => [
+        ...prev.slice(-(MAX_ACTIVE_CLICK_BURSTS - 1)),
+        { id, paths },
+      ]);
+      queueCleanup(() => {
         setClickBursts((prev) => prev.filter((b) => b.id !== id));
       }, CLICK_BURST_CLEANUP_MS);
     },
-    [reducedMotion, edgeVertices],
+    [reducedMotion, edgeVertices, edgePaths, queueCleanup, xs, ys],
   );
 
   useImperativeHandle(
@@ -750,20 +871,6 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
     [pulsePathIndices, edgePaths],
   );
 
-  const pulseEnergy = useMemo(() => {
-    if (!globalPulse || reducedMotion) {
-      return { beat: 0, forPoint: (_x, _y) => 0 };
-    }
-    const beat = heartbeatEnvelope(globalPulseT);
-    const forPoint = (x, y) => {
-      const dist = Math.hypot(x - globalPulse.sx, y - globalPulse.sy);
-      const distNorm = clamp(dist / Math.max(1, globalPulse.maxDist), 0, 1.5);
-      const wave = radialWave(distNorm, globalPulseT);
-      return clamp(beat * (0.24 + wave * 1.05), 0, 1.8);
-    };
-    return { beat, forPoint };
-  }, [globalPulse, globalPulseT, reducedMotion]);
-
   return (
     <div
       ref={containerRef}
@@ -810,7 +917,6 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
               const centerDist = Math.hypot(c.x - CENTER_X, c.y - CENTER_Y);
               const distNorm = clamp(centerDist / CENTER_MAX_DISTANCE, 0, 1);
               const reveal = reducedMotion ? 1 : introReveal(introProgress, distNorm);
-              const pulseBoost = pulseEnergy.forPoint(c.x, c.y);
               return (
                 <path
                   key={`edge-${i}`}
@@ -819,11 +925,8 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
                   pathLength={100}
                   style={{
                     opacity:
-                      (0.35 + 0.65 * (0.25 + 0.75 * p) + 0.2 * pulseBoost) *
-                      reveal,
-                    strokeWidth:
-                      (1.05 + 0.85 * p + 1.15 * pulseBoost) *
-                      (0.72 + 0.28 * reveal),
+                      (0.35 + 0.65 * (0.25 + 0.75 * p)) * reveal,
+                    strokeWidth: (1.05 + 0.85 * p) * (0.72 + 0.28 * reveal),
                   }}
                 />
               );
@@ -833,8 +936,6 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
           <g className="network-edge-pulses" aria-hidden="true">
             {pulsePathIndices.map((edgeIdx, j) => {
               const p = edgeNear[edgeIdx] ?? 0;
-              const c = edgeCentroids[edgeIdx] ?? { x: CENTER_X, y: CENTER_Y };
-              const pulseBoost = pulseEnergy.forPoint(c.x, c.y);
               return (
                 <path
                   key={`pulse-line-${edgeIdx}`}
@@ -843,8 +944,8 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
                   pathLength={100}
                   style={{
                     animationDelay: `${j * -0.35}s`,
-                    opacity: 0.38 + 0.55 * (0.3 + 0.7 * p) + 0.26 * pulseBoost,
-                    strokeWidth: 1.15 + 1.15 * p + 0.9 * pulseBoost,
+                    opacity: (0.48 + 0.44 * (0.3 + 0.7 * p)) * 0.5,
+                    "--pulse-near": p,
                   }}
                 />
               );
@@ -862,11 +963,10 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
               const coreR = 1.35 + 2.2 * p;
               const ringR = 3.3 + 4.6 * p;
               const hot = p > 0.52;
-              const pulseBoost = pulseEnergy.forPoint(cx, cy);
               return (
                 <g
                   key={`node-${i}`}
-                  transform={`translate(${cx} ${cy}) scale(${scale * (0.58 + 0.42 * reveal + 0.11 * pulseBoost)})`}
+                  transform={`translate(${cx} ${cy}) scale(${scale * (0.58 + 0.42 * reveal)})`}
                   style={{
                     opacity: reveal,
                     transition:
@@ -874,10 +974,10 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
                   }}
                 >
                   <circle
-                    r={ringR + (hot ? 1.8 * p : 0) + 1.25 * pulseBoost}
+                    r={ringR + (hot ? 1.8 * p : 0)}
                     className="network-node network-node-ring"
                     style={{
-                      opacity: 0.2 + 0.75 * ringBoost + 0.2 * pulseBoost,
+                      opacity: 0.2 + 0.75 * ringBoost,
                       strokeWidth: 0.75 + 0.75 * p,
                       transition:
                         "r 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.42s ease, stroke-width 0.42s ease",
@@ -894,11 +994,11 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
                     />
                   ) : null}
                   <circle
-                    r={coreR + 1.05 * pulseBoost}
+                    r={coreR}
                     className="network-node network-node-core"
                     filter={hot ? "url(#nodeBloomHot)" : "url(#nodeBloom)"}
                     style={{
-                      opacity: 0.55 + 0.45 * (0.4 + 0.6 * p) + 0.26 * pulseBoost,
+                      opacity: 0.55 + 0.45 * (0.4 + 0.6 * p),
                       transition:
                         "r 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.42s ease",
                     }}
@@ -911,26 +1011,17 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
           <g
             className="network-packets"
             style={{
-              opacity:
-                0.65 +
-                0.35 * Math.min(1, maxNodeNear * 1.2) +
-                0.2 * pulseEnergy.beat,
+              opacity: 0.65 + 0.35 * Math.min(1, maxNodeNear * 1.2),
             }}
           >
             {pulsePaths.map((d, idx) => {
               const p = pulsePathNear[idx] ?? 0;
-              const edgeIdx = pulsePathIndices[idx];
-              const c =
-                edgeIdx != null
-                  ? edgeCentroids[edgeIdx] ?? { x: CENTER_X, y: CENTER_Y }
-                  : { x: CENTER_X, y: CENTER_Y };
-              const pulseBoost = pulseEnergy.forPoint(c.x, c.y);
               return (
                 <circle
                   key={`pkt-a-${idx}`}
-                  r={1.9 + 2.7 * p + 1.2 * pulseBoost}
+                  r={2.45 + 3.35 * p}
                   className="network-packet"
-                  style={{ opacity: 0.72 + 0.28 * p + 0.22 * pulseBoost }}
+                  style={{ opacity: 0.78 + 0.22 * p }}
                 >
                   <animateMotion
                     dur={`${11 + (idx % 5) * 2.2}s`}
@@ -943,20 +1034,13 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
             })}
             {pulsePaths.map((d, idx) => {
               const p = pulsePathNear[idx] ?? 0;
-              const edgeIdx = pulsePathIndices[idx];
-              const c =
-                edgeIdx != null
-                  ? edgeCentroids[edgeIdx] ?? { x: CENTER_X, y: CENTER_Y }
-                  : { x: CENTER_X, y: CENTER_Y };
-              const pulseBoost = pulseEnergy.forPoint(c.x, c.y);
               return (
                 <circle
                   key={`pkt-b-${idx}`}
-                  r={1.2 + 1.5 * p + 0.7 * pulseBoost}
+                  r={1.65 + 2.05 * p}
                   className="network-packet network-packet-dim"
                   style={{
-                    opacity:
-                      0.32 + 0.48 * (0.35 + 0.65 * p) + 0.16 * pulseBoost,
+                    opacity: 0.4 + 0.5 * (0.35 + 0.65 * p),
                   }}
                 >
                   <animateMotion
@@ -970,28 +1054,78 @@ const NetworkBackdrop = forwardRef(function NetworkBackdrop(_props, ref) {
             })}
           </g>
 
+          {!reducedMotion && globalPulses.length > 0 ? (
+            <g className="network-global-pulses" aria-hidden="true">
+              {globalPulses.map((pulse) => (
+                <g key={pulse.id}>
+                  {edgePaths.map((d, i) => {
+                    const c = edgeCentroids[i] ?? { x: CENTER_X, y: CENTER_Y };
+                    const intensity = pulseIntensity(pulse, c.x, c.y);
+                    const style = {
+                      animationDelay: `${pulseDelaySeconds(pulse, c.x, c.y)}s`,
+                      animationDuration: `${GLOBAL_EDGE_PULSE_DUR_S + intensity * 0.16}s`,
+                      "--network-global-wave-opacity": (0.14 + intensity * 0.28).toFixed(3),
+                      "--network-global-wave-stroke-width": (0.92 + intensity * 1.12).toFixed(3),
+                    };
+
+                    return (
+                      <path
+                        key={`global-edge-${pulse.id}-${i}`}
+                        d={d}
+                        className="network-global-edge-wave"
+                        style={style}
+                      />
+                    );
+                  })}
+
+                  {nodePoints.map(([cx, cy], i) => {
+                    const intensity = pulseIntensity(pulse, cx, cy);
+                    const style = {
+                      animationDelay: `${pulseDelaySeconds(pulse, cx, cy)}s`,
+                      animationDuration: `${GLOBAL_NODE_PULSE_DUR_S + intensity * 0.18}s`,
+                      "--network-global-node-opacity": (0.24 + intensity * 0.36).toFixed(3),
+                      "--network-global-node-core-opacity": (0.48 + intensity * 0.28).toFixed(3),
+                      "--network-global-node-ring-scale": (1.34 + intensity * 0.62).toFixed(3),
+                      "--network-global-node-core-scale": (1.16 + intensity * 0.34).toFixed(3),
+                    };
+
+                    return (
+                      <g
+                        key={`global-node-${pulse.id}-${i}`}
+                        transform={`translate(${cx} ${cy})`}
+                      >
+                        <g className="network-global-node-wave" style={style}>
+                          <circle
+                            r={4.1 + intensity * 1.8}
+                            className="network-global-node-wave-ring"
+                          />
+                          <circle
+                            r={1.8 + intensity * 0.7}
+                            className="network-global-node-wave-core"
+                          />
+                        </g>
+                      </g>
+                    );
+                  })}
+                </g>
+              ))}
+            </g>
+          ) : null}
+
           {clickBursts.length > 0 ? (
             <g className="network-click-bursts" style={{ pointerEvents: "none" }}>
-              {clickBursts.map(({ id, indices, sx, sy }) =>
-                indices.flatMap((pathIdx, pathOrder) => {
-                  const dPath = burstPathFromClick(
-                    sx,
-                    sy,
-                    pathIdx,
-                    edgeVertices,
-                    edgePaths,
-                  );
-                  if (!dPath) return [];
-                  return Array.from({ length: CLICK_BURST_WAVES }, (_, wave) => (
+              {clickBursts.map(({ id, paths }) =>
+                paths.flatMap((dPath, pathOrder) =>
+                  Array.from({ length: CLICK_BURST_WAVES }, (_, wave) => (
                     <ClickBurstWave
-                      key={`${id}-${pathIdx}-${wave}`}
-                      burstKey={`${id}-${pathIdx}-${wave}`}
+                      key={`${id}-${pathOrder}-${wave}`}
+                      burstKey={`${id}-${pathOrder}-${wave}`}
                       d={dPath}
                       wave={wave}
                       pathOrder={pathOrder}
                     />
-                  ));
-                }),
+                  )),
+                ),
               )}
             </g>
           ) : null}

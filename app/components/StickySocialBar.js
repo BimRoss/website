@@ -8,7 +8,7 @@ import { useSiteToast } from "./ToastProvider";
 const CALL_TOAST_MESSAGE = "email us instead";
 
 /**
- * Square cells: each column shares row width; height matches width (aspect-square).
+ * Mobile: square cells (height = column width). Desktop (md+): row (5.5rem) + cell padding.
  */
 export function StickySocialBar() {
   const { showToast } = useSiteToast();
@@ -33,7 +33,7 @@ export function StickySocialBar() {
         >
         {socials.map(({ label, href, action, icon: Icon }) => {
           const className =
-            "social-cell group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-white/12 transition-[transform,border-color,box-shadow,background-color] duration-300 ease-in-out last:border-r-0 active:scale-[0.98] md:hover:scale-[1.04] md:focus-visible:scale-[1.04] focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/50";
+            "social-cell group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-white/12 last:border-r-0 focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/50 md:aspect-auto md:h-[5.5rem] md:max-h-[5.5rem] md:px-3 md:py-2.5";
           const icon = (
             <span className="social-icon-shell" aria-hidden>
               <Icon className="social-icon shrink-0 text-white" aria-hidden />
