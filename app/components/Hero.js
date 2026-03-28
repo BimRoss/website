@@ -11,14 +11,8 @@ import { siteDescription } from "../data/site";
 function productCtaClassName() {
   return [
     "hero-cta product-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center px-10 py-4",
-    "border border-white/45 bg-gradient-to-br from-white/44 via-white/30 to-white/18",
-    "shadow-[0_12px_36px_rgba(0,0,0,0.055),inset_0_1px_0_rgba(255,255,255,0.55)]",
-    "backdrop-blur-md backdrop-saturate-115",
-    "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-900",
-    "transform-gpu transition-[transform,border-color,box-shadow,background-color,backdrop-filter,opacity]",
-    "hover:border-white/60 hover:from-white/52 hover:via-white/36 hover:to-white/22",
-    "hover:shadow-[0_18px_44px_rgba(0,0,0,0.07),inset_0_1px_0_rgba(255,255,255,0.72)]",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900/40",
+    "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50",
+    "transform-gpu focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/45",
     "md:min-w-[14rem] md:px-12 md:py-5",
   ].join(" ");
 }
