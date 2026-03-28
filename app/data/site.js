@@ -5,14 +5,14 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "BimRoss is a founder-led single-person LLC building Bittensor infrastructure, AI systems, and operator software. We ship happy automations: calm, reliable tooling with secure execution, clear incentive alignment, and end-to-end delivery from local development through GitHub, CI/CD, and Kubernetes.";
+  "BimRoss is a single-person LLC focused on building distributed infrastructure, agentic-powered backend systems, and self-improving UI's. We focus on Bittensor infrastructure, AI products, and operator tooling for teams that need secure execution, reliable operations, and incentive alignment.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "BimRoss LLC builds Bittensor infrastructure, AI systems, and operator software with secure execution, GitOps delivery, and happy automations.";
+  "BimRoss builds distributed infrastructure, agentic-powered backend systems, self-improving UI's, and operator tooling for secure, reliable execution.";
 
 export const ogDescription =
-  "Founder-led Bittensor infrastructure, AI systems, and operator software with GitOps-grade delivery from repo to cluster.";
+  "Single-person LLC building distributed infrastructure, agentic-powered backend systems, self-improving UI's, and operator tooling.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
