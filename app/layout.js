@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans, Syne } from "next/font/google";
+import { IBM_Plex_Sans, Sora } from "next/font/google";
 import Script from "next/script";
 
 import { JsonLd } from "./components/JsonLd";
@@ -6,11 +6,10 @@ import { buildRootJsonLd, metaDescription, ogDescription } from "./data/site";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
-/** Display: geometric, high-contrast — avoids generic serif “startup” look */
-const syne = Syne({
+const sora = Sora({
   weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-title",
   display: "swap",
 });
 
@@ -92,7 +91,8 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#000000",
+  themeColor: "#ffffff",
+  colorScheme: "light",
   viewportFit: "cover",
 };
 
@@ -102,12 +102,15 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${ibmPlex.variable} h-full overflow-hidden`}
+      className={`${sora.variable} ${ibmPlex.variable} h-full overflow-hidden bg-white text-zinc-950`}
     >
-      <body className="relative z-0 h-dvh overflow-hidden bg-[#000000] antialiased">
+      <body
+        className="relative z-0 h-dvh overflow-hidden bg-white text-zinc-950 antialiased"
+        suppressHydrationWarning
+      >
         <a
           href="#main-content"
-          className="sr-only absolute left-4 top-4 z-[10001] bg-black px-4 py-2 text-sm text-white focus:not-sr-only focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white"
+          className="sr-only absolute left-4 top-4 z-[10001] bg-white px-4 py-2 text-sm text-zinc-950 ring-1 ring-zinc-300 focus:not-sr-only focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-zinc-700"
         >
           Skip to main content
         </a>

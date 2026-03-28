@@ -1,55 +1,64 @@
 import { Hero } from "./components/Hero";
-import { OpsStrip } from "./components/OpsStrip";
 import { SiteFooter } from "./components/SiteFooter";
 import { StickySocialBar } from "./components/StickySocialBar";
 
 export default function Home() {
   return (
     <>
-      <main id="main-content" className="flex min-h-0 flex-1 flex-col">
+      <main id="main-content" className="flex min-h-0 flex-1 flex-col bg-white">
         <Hero />
         <section
-          className="border-t border-white/10 px-6 py-12 md:px-10 md:py-16"
-          aria-labelledby="work-with-us-heading"
+          className="border-t border-black/10 px-6 py-12 md:px-10 md:py-16"
+          aria-labelledby="start-here"
         >
           <div className="mx-auto max-w-6xl">
             <h2
-              id="work-with-us-heading"
-              className="font-display text-2xl tracking-tight text-zinc-100 md:text-3xl"
+              id="start-here"
+              className="font-display text-2xl tracking-tight text-zinc-950 md:text-3xl"
             >
-              Why BimRoss exists
+              Start here
             </h2>
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-300 md:text-lg">
-              We help Bittensor teams that want production discipline without bureaucracy. BimRoss
-              is intentionally compact: one owner, fast decisions, tight feedback loops, and
-              systems shaped by direct accountability.
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700 md:text-lg">
+              The fastest way to understand BimRoss is to look at the flagship product, a shipped
+              automation product, and the founder behind the work.
             </p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
-              <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
-                <p className="font-semibold text-white">Single-person ownership</p>
-                <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  One accountable owner means less committee drag, tighter product judgment, and
-                  faster execution.
+              <a
+                href="https://subnetsignal.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-black/10 p-4 transition hover:border-black/25"
+              >
+                <p className="font-semibold text-zinc-950">Subnet Signal</p>
+                <p className="mt-1 text-sm leading-relaxed text-zinc-700">
+                  Bittensor tooling for operators who want signal, not noise.
                 </p>
-              </article>
-              <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
-                <p className="font-semibold text-white">Operator proof</p>
-                <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  We build for real uptime, real incentives, and real production constraints, not
-                  slide decks.
+              </a>
+              <a
+                href="https://getinvoicepilot.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-black/10 p-4 transition hover:border-black/25"
+              >
+                <p className="font-semibold text-zinc-950">Invoice Pilot</p>
+                <p className="mt-1 text-sm leading-relaxed text-zinc-700">
+                  Automation software for invoicing and operational admin workflows.
                 </p>
-              </article>
-              <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
-                <p className="font-semibold text-white">Trillion-dollar ambition</p>
-                <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  We are building for a world where a single person can wield company-scale
-                  leverage, and we want to be early to that curve.
+              </a>
+              <a
+                href="https://grantfoster.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-black/10 p-4 transition hover:border-black/25"
+              >
+                <p className="font-semibold text-zinc-950">Founder profile</p>
+                <p className="mt-1 text-sm leading-relaxed text-zinc-700">
+                  The personal site behind the company, with shipped work and public proof.
                 </p>
-              </article>
+              </a>
             </div>
           </div>
         </section>
-        <OpsStrip />
       </main>
       <footer className="relative z-20 flex shrink-0 flex-col" role="contentinfo">
         <StickySocialBar />
