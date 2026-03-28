@@ -65,7 +65,7 @@ export function Hero() {
             }}
           >
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
-              Company-as-code · Bittensor-native
+              Happy automations · company-as-code
             </p>
             <h1
               id="hero-heading"
