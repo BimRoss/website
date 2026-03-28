@@ -5,10 +5,14 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "BimRoss is a founder-led single-person LLC building Bittensor infrastructure, operator tooling, and AI products with secure execution, reliable uptime, and clear incentive alignment.";
+  "BimRoss is a founder-led single-person LLC building Bittensor infrastructure, AI systems, and operator software. We ship happy automations: calm, reliable tooling with secure execution, clear incentive alignment, and end-to-end delivery from local development through GitHub, CI/CD, and Kubernetes.";
+
+/** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
+export const metaDescription =
+  "BimRoss LLC builds Bittensor infrastructure, AI systems, and operator software with secure execution, GitOps delivery, and happy automations.";
 
 export const ogDescription =
-  "Founder-led Bittensor infrastructure and operator software from a single-person LLC.";
+  "Founder-led Bittensor infrastructure, AI systems, and operator software with GitOps-grade delivery from repo to cluster.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -29,7 +33,7 @@ export const projects = [
   {
     name: "Invoice Pilot",
     url: "https://getinvoicepilot.com",
-    description: "Automation for invoice workflows and operational admin.",
+    description: "Happy automations for invoice workflows and operational admin.",
   },
   {
     name: "Grant Foster",
@@ -53,10 +57,14 @@ export const siteProfile = {
   },
   sameAs,
   focus: [
-    "Bittensor infrastructure",
-    "miner operations",
-    "TEE execution",
-    "incentive design",
+    "Bittensor",
+    "artificial intelligence",
+    "operator software",
+    "distributed networks",
+    "blockchain incentives",
+    "end-to-end delivery from local development through GitHub, CI/CD, and Kubernetes",
+    "TEE-integrated workflows",
+    "happy automations",
   ],
   projects: projects.map((p) => ({
     name: p.name,
@@ -67,7 +75,12 @@ export const siteProfile = {
     profileJson: `${SITE_URL}/profile.json`,
     projectsJson: `${SITE_URL}/projects.json`,
     llmsTxt: `${SITE_URL}/llms.txt`,
+    llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
+  ambition:
+    "BimRoss is building for a world where a single person can wield company-scale leverage.",
+  e2eDefinition:
+    "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
 
 /**
@@ -117,8 +130,15 @@ export function buildRootJsonLd() {
         knowsAbout: [
           "Bittensor",
           "Subnet 42",
+          "artificial intelligence",
+          "distributed networks",
+          "blockchain",
           "TEE",
           "cryptocurrency mining infrastructure",
+          "full-stack development",
+          "GitHub",
+          "CI/CD",
+          "Kubernetes",
         ],
       },
       {
@@ -163,7 +183,7 @@ export function buildAboutPageJsonLd() {
         url,
         name: "About BimRoss",
         description:
-          "About BimRoss LLC: Bittensor infrastructure, miner fleets, TEE workflows, and incentive systems.",
+          "About BimRoss LLC: Bittensor, AI, distributed networks, blockchain incentives, full-stack software, and end-to-end delivery from development through GitOps.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "en-US",
@@ -191,7 +211,7 @@ export function buildProjectsPageJsonLd() {
         url,
         name: "BimRoss projects",
         description:
-          "Directory of projects built and operated by BimRoss, including Subnet Signal and Invoice Pilot.",
+          "Directory of projects built and operated by BimRoss, including Subnet Signal, Invoice Pilot (happy automations), and related properties.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "en-US",

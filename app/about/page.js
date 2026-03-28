@@ -4,7 +4,7 @@ import { buildAboutPageJsonLd } from "../data/site";
 export const metadata = {
   title: "About",
   description:
-    "About BimRoss: a founder-led single-person LLC building Bittensor infrastructure, operator tooling, and AI products.",
+    "About BimRoss: Bittensor, AI, distributed networks, blockchain incentives, full-stack software, and end-to-end delivery through GitHub, CI/CD, and Kubernetes.",
   alternates: {
     canonical: "/about",
   },
@@ -19,16 +19,23 @@ export default function AboutPage() {
           <h1 className="font-display text-4xl tracking-tight md:text-5xl">About BimRoss</h1>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
             BimRoss builds and operates Bittensor infrastructure with a focus on reliability,
-            economic alignment, and practical operator tooling.
+            economic alignment, AI-assisted workflows, and practical operator tooling across
+            distributed networks.
           </p>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
-            Our work includes miner fleet operations, TEE-integrated workflows, and incentive
-            design across products such as Subnet Signal and Invoice Pilot.
+            Our work includes miner fleet operations, TEE-integrated workflows, blockchain
+            incentive design, and full-stack products such as Subnet Signal and Invoice Pilot
+            (happy automations for back-office work).
           </p>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
-            BimRoss is intentionally built as a founder-led single-person LLC. We keep the company
-            tight on purpose: direct accountability, faster iteration, and a long-term belief that
-            the single-person-owned trillion-dollar company is possible. We aim to be that company.
+            End-to-end execution means connecting local AI-assisted development and code generation
+            to GitHub, CI/CD, and Kubernetes—and encoding execution playbooks (including Alex
+            Hormozi–style frameworks) into reusable agent rules so we compound speed safely.
+          </p>
+          <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
+            BimRoss is intentionally built as a founder-led single-person LLC. Press and industry
+            commentary have discussed a single-person trillion-dollar company; we aim to be that
+            company.
           </p>
           <ul className="list-disc space-y-2 pl-6 text-zinc-300">
             <li>Company: BimRoss LLC</li>

@@ -6,8 +6,6 @@ import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 
 const productCTAs = [
-  { kind: "link", label: "Follow BimRoss Updates", href: "https://x.com/subnet_signal" },
-  { kind: "link", label: "Watch Operator Briefings", href: "https://www.youtube.com/@geeeeemoney" },
   { kind: "link", label: "See Subnet Signal", href: "https://subnetsignal.com" },
   { kind: "link", label: "Explore Invoice Pilot", href: "https://getinvoicepilot.com" },
   { kind: "link", label: "Talk to Founder", href: "mailto:grant@bimross.com" },
@@ -65,7 +63,7 @@ export function Hero() {
             }}
           >
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
-              founder-led operator leverage
+              Happy automations
             </p>
             <h1
               id="hero-heading"
@@ -90,18 +88,17 @@ export function Hero() {
                 <span className="hero-brand-llc">LLC</span>
               </span>
             </h1>
-            <p className="mt-5 font-sans text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg md:leading-relaxed lg:text-xl">
-              BimRoss is a founder-led, single-person LLC building Bittensor infrastructure, AI
-              products, and operator tooling for teams that need secure execution, reliable
-              operations, and incentive alignment.
+            <p className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg md:leading-relaxed lg:text-xl">
+              Founder-led Bittensor infrastructure, AI systems, and operator software. We build
+              calm, reliable tooling with secure execution, clear incentives, and end-to-end
+              delivery from local development through GitHub, CI/CD, and Kubernetes.
             </p>
-            <div className="mt-5 max-w-2xl rounded-2xl border border-emerald-300/15 bg-emerald-300/[0.05] px-4 py-4 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+            <div className="mt-5 max-w-xl rounded-2xl border border-emerald-300/15 bg-emerald-300/[0.05] px-4 py-4 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-emerald-100/70 sm:text-[11px]">
                 Long-horizon thesis
               </p>
               <p className="mt-2 text-sm leading-relaxed text-zinc-200 md:text-base">
-                They say there will be a single-person-owned trillion-dollar company. We aim to be
-                that company.
+                We are building for a world where a single person can wield company-scale leverage.
               </p>
             </div>
             <ul className="mt-5 grid grid-cols-1 gap-2 text-sm font-medium text-zinc-200 sm:grid-cols-3">

@@ -82,7 +82,7 @@ export default function OpenGraphImage() {
                   letterSpacing: "-0.06em",
                 }}
               >
-                Founder-Led Infrastructure
+                Bittensor, AI & Full-Stack
               </div>
             </div>
           </div>
@@ -101,8 +101,8 @@ export default function OpenGraphImage() {
                 color: "#e4e4e7",
               }}
             >
-              Bittensor systems, operator tooling, and AI products built with
-              single-owner accountability.
+              Distributed networks, blockchain incentives, and end-to-end delivery—local
+              development through GitHub, CI/CD, and Kubernetes—with single-owner accountability.
             </div>
             <div
               style={{
@@ -115,9 +115,9 @@ export default function OpenGraphImage() {
               }}
             >
               <span>Single-Person LLC</span>
-              <span>Subnet 42</span>
+              <span>Bittensor</span>
               <span>Subnet Signal</span>
-              <span>Invoice Pilot</span>
+              <span>E2E · K8s</span>
             </div>
           </div>
         </div>

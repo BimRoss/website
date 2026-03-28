@@ -42,8 +42,8 @@ export default function Home() {
               <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
                 <p className="font-semibold text-white">Trillion-dollar ambition</p>
                 <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  We believe the single-person-owned trillion-dollar company is coming, and we are
-                  building with that leverage curve in mind.
+                  We are building for a world where a single person can wield company-scale
+                  leverage, and we want to be early to that curve.
                 </p>
               </article>
             </div>

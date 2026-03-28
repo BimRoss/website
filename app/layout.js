@@ -2,7 +2,7 @@ import { IBM_Plex_Sans, Syne } from "next/font/google";
 import Script from "next/script";
 
 import { JsonLd } from "./components/JsonLd";
-import { buildRootJsonLd } from "./data/site";
+import { buildRootJsonLd, metaDescription, ogDescription } from "./data/site";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
@@ -23,14 +23,8 @@ const ibmPlex = IBM_Plex_Sans({
 
 const siteUrl = "https://bimross.com";
 const siteName = "BimRoss";
-const siteTitle = "BimRoss - Founder-Led Infrastructure";
+const siteTitle = "BimRoss - Bittensor, AI & Full-Stack Infrastructure";
 const ogImagePath = "/opengraph-image";
-
-const siteDescription =
-  "BimRoss is a founder-led single-person LLC building Bittensor infrastructure, operator tooling, and AI products with secure execution, reliable uptime, and clear incentive alignment.";
-
-const ogDescription =
-  "Founder-led Bittensor infrastructure and operator software from a single-person LLC.";
 
 const rootJsonLd = buildRootJsonLd();
 
@@ -49,9 +43,18 @@ export const metadata = {
     default: siteTitle,
     template: "%s · BimRoss",
   },
-  description: siteDescription,
+  description: metaDescription,
   keywords: [
     "Bittensor",
+    "AI",
+    "artificial intelligence",
+    "distributed networks",
+    "blockchain",
+    "full stack",
+    "end-to-end",
+    "GitHub",
+    "CI/CD",
+    "Kubernetes",
     "mining",
     "validators",
     "Subnet 42",
@@ -71,7 +74,7 @@ export const metadata = {
         url: ogImagePath,
         width: 1200,
         height: 630,
-        alt: "BimRoss - Bittensor infrastructure and mining operations",
+        alt: "BimRoss - Bittensor, AI, distributed systems, and full-stack infrastructure",
       },
     ],
   },

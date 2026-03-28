@@ -4,7 +4,7 @@ import { buildProjectsPageJsonLd, projects } from "../data/site";
 export const metadata = {
   title: "Projects",
   description:
-    "Projects built and operated by BimRoss, including Subnet Signal and Invoice Pilot.",
+    "Projects built and operated by BimRoss: Subnet Signal, Invoice Pilot (happy automations), and related properties.",
   alternates: {
     canonical: "/projects",
   },

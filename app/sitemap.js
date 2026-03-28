@@ -11,6 +11,8 @@ export default function sitemap() {
     "/projects",
     "/profile.json",
     "/projects.json",
+    "/llms.txt",
+    "/llms-full.txt",
   ];
 
   return paths.map((path, index) => ({
