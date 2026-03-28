@@ -10,10 +10,10 @@ import { siteDescription } from "../data/site";
 /** Light frosted glass CTAs — same chip pattern as grantfoster.dev */
 function productCtaClassName() {
   return [
-    "hero-cta product-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center px-10 py-4",
+    "hero-cta product-cta inline-flex min-h-[48px] min-w-[11rem] items-center justify-center px-8 py-3.5",
     "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50",
     "transform-gpu focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/45",
-    "md:min-w-[14rem] md:px-12 md:py-5",
+    "md:min-h-[52px] md:min-w-[14rem] md:px-12 md:py-5",
   ].join(" ");
 }
 
@@ -88,7 +88,7 @@ export function Hero() {
 
           <nav
             aria-label="Products and links"
-            className="products-scroll products-reveal pointer-events-auto flex min-h-[12rem] w-full flex-none flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:min-h-0 md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
+            className="products-scroll products-reveal pointer-events-auto flex min-h-[11rem] max-h-[17rem] w-full flex-none flex-col gap-3 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:max-h-none md:min-h-0 md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
           >
             {productCTAs.map((cta) => {
               const ctaClass = productCtaClassName();
