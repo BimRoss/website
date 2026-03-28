@@ -17,29 +17,33 @@ export default function Home() {
               id="work-with-us-heading"
               className="font-display text-2xl tracking-tight text-zinc-100 md:text-3xl"
             >
-              Who we help
+              Why BimRoss exists
             </h2>
             <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-300 md:text-lg">
-              Bittensor teams that need dependable operations, secure execution paths, and faster
-              iteration across miner and validator workflows.
+              We help Bittensor teams that want production discipline without bureaucracy. BimRoss
+              is intentionally compact: one owner, fast decisions, tight feedback loops, and
+              systems shaped by direct accountability.
             </p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
-                <p className="font-semibold text-white">What we do</p>
+                <p className="font-semibold text-white">Single-person ownership</p>
                 <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  Operate miner and validator infrastructure with production deployment discipline.
+                  One accountable owner means less committee drag, tighter product judgment, and
+                  faster execution.
                 </p>
               </article>
               <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
-                <p className="font-semibold text-white">How we prove it</p>
+                <p className="font-semibold text-white">Operator proof</p>
                 <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  We share operator updates in public so teams can see decisions and outcomes.
+                  We build for real uptime, real incentives, and real production constraints, not
+                  slide decks.
                 </p>
               </article>
               <article className="rounded-lg border border-white/15 bg-white/[0.03] p-4">
-                <p className="font-semibold text-white">Where to start</p>
+                <p className="font-semibold text-white">Trillion-dollar ambition</p>
                 <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  Follow updates, review products, then contact us for focused implementation.
+                  We believe the single-person-owned trillion-dollar company is coming, and we are
+                  building with that leverage curve in mind.
                 </p>
               </article>
             </div>

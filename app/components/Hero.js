@@ -65,7 +65,7 @@ export function Hero() {
             }}
           >
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
-              operator-first infrastructure
+              founder-led operator leverage
             </p>
             <h1
               id="hero-heading"
@@ -91,12 +91,22 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-5 font-sans text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg md:leading-relaxed lg:text-xl">
-              We run Bittensor infrastructure for teams that need secure execution, reliable
+              BimRoss is a founder-led, single-person LLC building Bittensor infrastructure, AI
+              products, and operator tooling for teams that need secure execution, reliable
               operations, and incentive alignment.
             </p>
+            <div className="mt-5 max-w-2xl rounded-2xl border border-emerald-300/15 bg-emerald-300/[0.05] px-4 py-4 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-emerald-100/70 sm:text-[11px]">
+                Long-horizon thesis
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-200 md:text-base">
+                They say there will be a single-person-owned trillion-dollar company. We aim to be
+                that company.
+              </p>
+            </div>
             <ul className="mt-5 grid grid-cols-1 gap-2 text-sm font-medium text-zinc-200 sm:grid-cols-3">
               <li className="rounded border border-white/20 bg-white/[0.06] px-3 py-2">
-                Subnet 42 operations
+                Founder-led execution
               </li>
               <li className="rounded border border-white/20 bg-white/[0.06] px-3 py-2">
                 TEE-integrated workflows

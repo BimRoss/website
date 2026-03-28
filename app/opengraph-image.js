@@ -82,7 +82,7 @@ export default function OpenGraphImage() {
                   letterSpacing: "-0.06em",
                 }}
               >
-                Bittensor Infrastructure
+                Founder-Led Infrastructure
               </div>
             </div>
           </div>
@@ -101,8 +101,8 @@ export default function OpenGraphImage() {
                 color: "#e4e4e7",
               }}
             >
-              Miner fleets, validator operations, incentive design, TEE execution,
-              and Bittensor tooling that actually ships.
+              Bittensor systems, operator tooling, and AI products built with
+              single-owner accountability.
             </div>
             <div
               style={{
@@ -114,10 +114,10 @@ export default function OpenGraphImage() {
                 color: "#a1a1aa",
               }}
             >
+              <span>Single-Person LLC</span>
               <span>Subnet 42</span>
               <span>Subnet Signal</span>
               <span>Invoice Pilot</span>
-              <span>TEE Execution</span>
             </div>
           </div>
         </div>

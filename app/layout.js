@@ -23,14 +23,14 @@ const ibmPlex = IBM_Plex_Sans({
 
 const siteUrl = "https://bimross.com";
 const siteName = "BimRoss";
-const siteTitle = "BimRoss - Bittensor Infrastructure";
+const siteTitle = "BimRoss - Founder-Led Infrastructure";
 const ogImagePath = "/opengraph-image";
 
 const siteDescription =
-  "BimRoss operates Bittensor infrastructure for teams that need secure execution, reliable uptime, and clear incentive alignment across Subnet 42 and related systems.";
+  "BimRoss is a founder-led single-person LLC building Bittensor infrastructure, operator tooling, and AI products with secure execution, reliable uptime, and clear incentive alignment.";
 
 const ogDescription =
-  "Operator-first Bittensor infrastructure: secure execution, uptime, and incentive alignment.";
+  "Founder-led Bittensor infrastructure and operator software from a single-person LLC.";
 
 const rootJsonLd = buildRootJsonLd();
 

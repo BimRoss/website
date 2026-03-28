@@ -4,7 +4,7 @@ import { buildAboutPageJsonLd } from "../data/site";
 export const metadata = {
   title: "About",
   description:
-    "About BimRoss: we design and operate Bittensor infrastructure, including miner fleets, TEE workflows, and incentive systems.",
+    "About BimRoss: a founder-led single-person LLC building Bittensor infrastructure, operator tooling, and AI products.",
   alternates: {
     canonical: "/about",
   },
@@ -24,6 +24,11 @@ export default function AboutPage() {
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
             Our work includes miner fleet operations, TEE-integrated workflows, and incentive
             design across products such as Subnet Signal and Invoice Pilot.
+          </p>
+          <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
+            BimRoss is intentionally built as a founder-led single-person LLC. We keep the company
+            tight on purpose: direct accountability, faster iteration, and a long-term belief that
+            the single-person-owned trillion-dollar company is possible. We aim to be that company.
           </p>
           <ul className="list-disc space-y-2 pl-6 text-zinc-300">
             <li>Company: BimRoss LLC</li>

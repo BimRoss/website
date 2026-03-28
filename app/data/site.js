@@ -5,10 +5,10 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "BimRoss operates Bittensor infrastructure for teams that need secure execution, reliable uptime, and clear incentive alignment across Subnet 42 and related systems.";
+  "BimRoss is a founder-led single-person LLC building Bittensor infrastructure, operator tooling, and AI products with secure execution, reliable uptime, and clear incentive alignment.";
 
 export const ogDescription =
-  "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.";
+  "Founder-led Bittensor infrastructure and operator software from a single-person LLC.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
