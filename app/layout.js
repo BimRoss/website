@@ -27,10 +27,10 @@ const siteTitle = "BimRoss - Bittensor Infrastructure";
 const ogImagePath = "/opengraph-image";
 
 const siteDescription =
-  "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.";
+  "BimRoss operates Bittensor infrastructure for teams that need secure execution, reliable uptime, and clear incentive alignment across Subnet 42 and related systems.";
 
 const ogDescription =
-  "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.";
+  "Operator-first Bittensor infrastructure: secure execution, uptime, and incentive alignment.";
 
 const rootJsonLd = buildRootJsonLd();
 

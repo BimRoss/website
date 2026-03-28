@@ -5,7 +5,7 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "BimRoss designs, operates, and scales Bittensor infrastructure—from miner fleets to incentive design—including Subnet 42, tee-worker TEE execution, and Subnet Signal.";
+  "BimRoss operates Bittensor infrastructure for teams that need secure execution, reliable uptime, and clear incentive alignment across Subnet 42 and related systems.";
 
 export const ogDescription =
   "Bittensor infrastructure from miners to incentives—Subnet 42, TEE execution, Subnet Signal.";

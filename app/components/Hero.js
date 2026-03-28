@@ -6,12 +6,12 @@ import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 
 const productCTAs = [
-  { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
-  { kind: "link", label: "Subnet Agent", href: "https://x.com/subnet_signal" },
-  { kind: "toast", label: "Thread Pilot", message: "coming soon" },
-  { kind: "link", label: "Invoice Pilot", href: "https://getinvoicepilot.com" },
-  { kind: "toast", label: "Joanne", message: "coming soon" },
-  { kind: "link", label: "Founder", href: "https://grantfoster.dev" },
+  { kind: "link", label: "Follow BimRoss Updates", href: "https://x.com/subnet_signal" },
+  { kind: "link", label: "Watch Operator Briefings", href: "https://www.youtube.com/@geeeeemoney" },
+  { kind: "link", label: "See Subnet Signal", href: "https://subnetsignal.com" },
+  { kind: "link", label: "Explore Invoice Pilot", href: "https://getinvoicepilot.com" },
+  { kind: "link", label: "Talk to Founder", href: "mailto:grant@bimross.com" },
+  { kind: "link", label: "Founder Profile", href: "https://grantfoster.dev" },
 ];
 
 /** Dark canvas: frosted glass — fuller fill + thin white rim */
@@ -65,7 +65,7 @@ export function Hero() {
             }}
           >
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
-              Happy automations
+              operator-first infrastructure
             </p>
             <h1
               id="hero-heading"
@@ -91,9 +91,20 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-5 font-sans text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg md:leading-relaxed lg:text-xl">
-              We design, operate, and scale Bittensor infrastructure—from miner fleets to
-              incentive design. We also do everything else.
+              We run Bittensor infrastructure for teams that need secure execution, reliable
+              operations, and incentive alignment.
             </p>
+            <ul className="mt-5 grid grid-cols-1 gap-2 text-sm font-medium text-zinc-200 sm:grid-cols-3">
+              <li className="rounded border border-white/20 bg-white/[0.06] px-3 py-2">
+                Subnet 42 operations
+              </li>
+              <li className="rounded border border-white/20 bg-white/[0.06] px-3 py-2">
+                TEE-integrated workflows
+              </li>
+              <li className="rounded border border-white/20 bg-white/[0.06] px-3 py-2">
+                Fleet-based GitOps delivery
+              </li>
+            </ul>
           </div>
 
           <nav
