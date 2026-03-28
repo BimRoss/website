@@ -5,14 +5,14 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "BimRoss is a single-person LLC focused on building distributed infrastructure, agentic-powered backend systems, and self-improving UI's. We focus on Bittensor infrastructure, AI products, and operator tooling for teams that need secure execution, reliable operations, and incentive alignment.";
+  "BimRoss has one goal — become the first trillion-dollar, single-person LLC. It wasn't possible — it now is with AI. We build distributed infrastructure, agentic-powered backend systems, and self-improving UIs. With a focus on Bittensor, BimRoss is positioned to prove the concept of company-as-code.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "BimRoss builds distributed infrastructure, agentic-powered backend systems, self-improving UI's, and operator tooling for secure, reliable execution.";
+  "BimRoss aims to prove company-as-code: trillion-dollar, single-person LLC leverage via AI — Bittensor, distributed infra, agentic backends, self-improving UIs.";
 
 export const ogDescription =
-  "Single-person LLC building distributed infrastructure, agentic-powered backend systems, self-improving UI's, and operator tooling.";
+  "Trillion-dollar single-person LLC ambition: distributed infrastructure, agentic backends, self-improving UIs, and Bittensor — company-as-code.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -33,7 +33,12 @@ export const projects = [
   {
     name: "Invoice Pilot",
     url: "https://getinvoicepilot.com",
-    description: "Happy automations for invoice workflows and operational admin.",
+    description: "Coming soon — happy automations for invoice workflows.",
+  },
+  {
+    name: "Thread Pilot",
+    url: "https://grantfoster.dev",
+    description: "AI-assisted thread workflows — coming soon.",
   },
   {
     name: "Grant Foster",
@@ -58,6 +63,7 @@ export const siteProfile = {
   sameAs,
   focus: [
     "Bittensor",
+    "company-as-code",
     "artificial intelligence",
     "operator software",
     "distributed networks",
@@ -78,7 +84,7 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "BimRoss is building for a world where a single person can wield company-scale leverage.",
+    "Become the first trillion-dollar, single-person LLC — company-as-code with AI.",
   e2eDefinition:
     "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
@@ -211,7 +217,7 @@ export function buildProjectsPageJsonLd() {
         url,
         name: "BimRoss projects",
         description:
-          "Directory of projects built and operated by BimRoss, including Subnet Signal, Invoice Pilot (happy automations), and related properties.",
+          "Directory of BimRoss properties: Subnet Signal; Invoice Pilot and Thread Pilot (coming soon); founder at grantfoster.dev.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "en-US",

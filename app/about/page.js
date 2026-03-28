@@ -18,14 +18,15 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl space-y-6">
           <h1 className="font-display text-4xl tracking-tight md:text-5xl">About BimRoss</h1>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
-            BimRoss builds and operates Bittensor infrastructure with a focus on reliability,
-            economic alignment, AI-assisted workflows, and practical operator tooling across
-            distributed networks.
+            BimRoss has one goal — become the first trillion-dollar, single-person LLC. That was not
+            possible before; it is now with AI. We build distributed infrastructure, agentic-powered
+            backend systems, and self-improving UIs, with a focus on Bittensor and the idea of
+            company-as-code.
           </p>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
             Our work includes miner fleet operations, TEE-integrated workflows, blockchain
-            incentive design, and full-stack products such as Subnet Signal and Invoice Pilot
-            (happy automations for back-office work).
+            incentive design, and products such as Subnet Signal (live), plus Invoice Pilot and
+            Thread Pilot (coming soon).
           </p>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
             End-to-end execution means connecting local AI-assisted development and code generation
@@ -33,9 +34,8 @@ export default function AboutPage() {
             Hormozi–style frameworks) into reusable agent rules so we compound speed safely.
           </p>
           <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
-            BimRoss is intentionally built as a founder-led single-person LLC. Press and industry
-            commentary have discussed a single-person trillion-dollar company; we aim to be that
-            company.
+            BimRoss is intentionally built as a founder-led single-person LLC — proving
+            company-scale leverage without proportional headcount.
           </p>
           <ul className="list-disc space-y-2 pl-6 text-zinc-300">
             <li>Company: BimRoss LLC</li>

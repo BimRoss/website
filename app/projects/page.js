@@ -4,7 +4,7 @@ import { buildProjectsPageJsonLd, projects } from "../data/site";
 export const metadata = {
   title: "Projects",
   description:
-    "Projects built and operated by BimRoss: Subnet Signal, Invoice Pilot (happy automations), and related properties.",
+    "BimRoss projects: Subnet Signal; Invoice Pilot and Thread Pilot (coming soon); founder at grantfoster.dev.",
   alternates: {
     canonical: "/projects",
   },
@@ -22,7 +22,7 @@ export default function ProjectsPage() {
           </p>
           <ul className="space-y-4">
             {projects.map((project) => (
-              <li key={project.url} className="rounded border border-white/15 p-4">
+              <li key={project.name} className="rounded border border-white/15 p-4">
                 <a
                   href={project.url}
                   target="_blank"

@@ -18,9 +18,7 @@ const pillars = [
     label: "Invoice Pilot",
     title: "Invoicing without the busywork",
     body:
-      "Invoice Pilot turns quotes and time into clean invoices and follow-ups—so you spend less time chasing paperwork and more time shipping.",
-    href: "https://getinvoicepilot.com",
-    hrefLabel: "Open Invoice Pilot",
+      "Invoice Pilot will turn quotes and time into clean invoices and follow-ups. Coming soon — same happy-automations posture as the rest of the stack.",
   },
   {
     id: "subnet-signal",

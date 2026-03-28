@@ -4,37 +4,39 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import NetworkBackdrop from "./NetworkBackdrop";
+import { useSiteToast } from "./ToastProvider";
 import { siteDescription } from "../data/site";
 
-const productCTAs = [
-  { label: "See Subnet Signal", href: "https://subnetsignal.com" },
-  { label: "Explore Invoice Pilot", href: "https://getinvoicepilot.com" },
-  { label: "Talk to Founder", href: "mailto:grant@bimross.com?subject=Talk%20to%20BimRoss" },
-  { label: "Founder Profile", href: "https://grantfoster.dev" },
-];
-
+/** Light frosted glass CTAs — same chip pattern as grantfoster.dev */
 function productCtaClassName() {
   return [
     "hero-cta product-cta inline-flex min-h-[52px] min-w-[12rem] items-center justify-center px-10 py-4",
-    "border border-white/30 bg-gradient-to-br from-white/[0.16] via-white/[0.08] to-white/[0.02]",
-    "shadow-[0_14px_40px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.14)]",
-    "backdrop-blur-md backdrop-saturate-150",
-    "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50",
+    "border border-white/45 bg-gradient-to-br from-white/44 via-white/30 to-white/18",
+    "shadow-[0_12px_36px_rgba(0,0,0,0.055),inset_0_1px_0_rgba(255,255,255,0.55)]",
+    "backdrop-blur-md backdrop-saturate-115",
+    "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-900",
     "transform-gpu transition-[transform,border-color,box-shadow,background-color,backdrop-filter,opacity]",
-    "hover:border-white/45 hover:from-white/[0.22] hover:via-white/[0.12]",
-    "hover:shadow-[0_18px_48px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.2)]",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
+    "hover:border-white/60 hover:from-white/52 hover:via-white/36 hover:to-white/22",
+    "hover:shadow-[0_18px_44px_rgba(0,0,0,0.07),inset_0_1px_0_rgba(255,255,255,0.72)]",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900/40",
     "md:min-w-[14rem] md:px-12 md:py-5",
   ].join(" ");
 }
 
+const productCTAs = [
+  { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
+  { kind: "toast", label: "Invoice Pilot", message: "Coming soon" },
+  { kind: "toast", label: "Thread Pilot", message: "Coming soon" },
+  { kind: "link", label: "Founder", href: "https://grantfoster.dev" },
+];
+
 export function Hero() {
+  const { showToast } = useSiteToast();
   const networkRef = useRef(null);
-  const ctaClass = productCtaClassName();
 
   return (
     <section
-      className="relative flex min-h-0 flex-1 flex-col justify-start bg-black px-5 pt-6 pb-4 md:justify-center md:px-10 md:py-8 md:pb-8"
+      className="relative flex min-h-0 flex-1 flex-col justify-start bg-black px-5 pt-6 pb-4 md:min-h-dvh md:justify-center md:px-10 md:py-8 md:pb-8"
       aria-labelledby="hero-heading"
     >
       <div className="fixed inset-0 z-0">
@@ -63,7 +65,7 @@ export function Hero() {
             }}
           >
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
-              Happy automations
+              Company-as-code · Bittensor-native
             </p>
             <h1
               id="hero-heading"
@@ -94,18 +96,34 @@ export function Hero() {
             aria-label="Products and links"
             className="products-scroll products-reveal pointer-events-auto flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
           >
-            {productCTAs.map((cta) => (
-              <div key={cta.href} className="product-cta-shell">
-                <a
-                  href={cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={ctaClass}
-                >
-                  {cta.label}
-                </a>
-              </div>
-            ))}
+            {productCTAs.map((cta) => {
+              const ctaClass = productCtaClassName();
+              if (cta.kind === "toast") {
+                return (
+                  <div key={cta.label} className="product-cta-shell">
+                    <button
+                      type="button"
+                      onClick={() => showToast(cta.message)}
+                      className={ctaClass}
+                    >
+                      {cta.label}
+                    </button>
+                  </div>
+                );
+              }
+              return (
+                <div key={cta.href} className="product-cta-shell">
+                  <a
+                    href={cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={ctaClass}
+                  >
+                    {cta.label}
+                  </a>
+                </div>
+              );
+            })}
           </nav>
         </div>
       </div>

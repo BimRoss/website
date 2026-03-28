@@ -1,19 +1,19 @@
 # BimRoss Full Context
 
 ## Company
-BimRoss LLC is a founder-led single-person company operating at the intersection of Bittensor, AI, distributed networks, blockchain incentives, and full-stack software.
+BimRoss LLC is a founder-led single-person company. The stated goal is to become the first trillion-dollar, single-person LLC — a category that was not credible before AI; the bet is that company-as-code (distributed infrastructure, agentic backends, self-improving UIs, Bittensor-native operations) makes that possible.
 
 ## What we do
 - Design and operate Bittensor-related infrastructure and miners where applicable.
 - Build AI products and operator-facing tools with production discipline.
 - Ship end-to-end: connect local AI-assisted development and code generation to GitHub, CI/CD, and Kubernetes (GitOps-style delivery).
-- Encode execution intelligence into reusable agent rules and automation—including Alex Hormozi–style business and execution frameworks expressed as skills, rules, and CI/CD-friendly workflows—so teams move faster and iterate safely.
+- Encode execution intelligence into reusable agent rules and automation so teams move faster and iterate safely.
 
 ## Brand
 - **Happy automations** — a Bim Ross / Bob Ross play on words: calm, reliable automation instead of noisy complexity.
 
-## Ambition
-- Media and industry commentary have discussed the possibility of a single-person trillion-dollar company. BimRoss aims to be that company.
+## Mission framing
+- **Company-as-code** — proving that one operator can wield company-scale leverage when the stack is automated, observable, and honest under pressure.
 
 ## Public websites
 - Main site: https://bimross.com
@@ -23,7 +23,8 @@ BimRoss LLC is a founder-led single-person company operating at the intersection
 - Projects JSON: https://bimross.com/projects.json
 - Short LLM summary: https://bimross.com/llms.txt
 - Subnet Signal: https://subnetsignal.com
-- Invoice Pilot: https://getinvoicepilot.com
+- Invoice Pilot: https://getinvoicepilot.com (coming soon)
+- Thread Pilot: https://grantfoster.dev (coming soon; see also founder profile)
 - Founder profile: https://grantfoster.dev
 
 ## Contact
