@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans, Sora } from "next/font/google";
+import { IBM_Plex_Sans, Syne } from "next/font/google";
 import Script from "next/script";
 
 import { JsonLd } from "./components/JsonLd";
@@ -6,7 +6,7 @@ import { buildRootJsonLd, metaDescription, ogDescription } from "./data/site";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
-const sora = Sora({
+const syne = Syne({
   weight: ["600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-title",
@@ -91,8 +91,8 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#ffffff",
-  colorScheme: "light",
+  themeColor: "#000000",
+  colorScheme: "dark",
   viewportFit: "cover",
 };
 
@@ -102,15 +102,15 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${ibmPlex.variable} h-full overflow-hidden bg-white text-zinc-950`}
+      className={`${syne.variable} ${ibmPlex.variable} h-full overflow-hidden bg-black text-zinc-50`}
     >
       <body
-        className="relative z-0 h-dvh overflow-hidden bg-white text-zinc-950 antialiased"
+        className="relative z-0 h-dvh overflow-hidden bg-black text-zinc-50 antialiased"
         suppressHydrationWarning
       >
         <a
           href="#main-content"
-          className="sr-only absolute left-4 top-4 z-[10001] bg-white px-4 py-2 text-sm text-zinc-950 ring-1 ring-zinc-300 focus:not-sr-only focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-zinc-700"
+          className="sr-only absolute left-4 top-4 z-[10001] bg-black px-4 py-2 text-sm text-white ring-1 ring-white/20 focus:not-sr-only focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white"
         >
           Skip to main content
         </a>

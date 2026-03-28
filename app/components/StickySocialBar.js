@@ -21,7 +21,7 @@ export function StickySocialBar() {
 
   return (
     <div
-      className="relative z-[60] w-full shrink-0 border-t border-black/10 bg-gradient-to-b from-white/[0.22] via-white/[0.14] to-transparent shadow-[inset_0_1px_0_rgba(255,255,255,0.62),0_-8px_24px_rgba(0,0,0,0.045)] backdrop-blur-md backdrop-saturate-110 supports-[backdrop-filter]:from-white/[0.18] supports-[backdrop-filter]:via-white/[0.08] supports-[backdrop-filter]:to-transparent"
+      className="relative z-[60] w-full shrink-0 border-t border-white/15 bg-gradient-to-b from-black/[0.22] via-black/[0.14] to-transparent shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_-8px_24px_rgba(0,0,0,0.4)] backdrop-blur-md backdrop-saturate-110 supports-[backdrop-filter]:from-black/[0.18] supports-[backdrop-filter]:via-black/[0.1] supports-[backdrop-filter]:to-transparent"
     >
       <nav aria-labelledby="social-heading" className="w-full">
         <h2 id="social-heading" className="sr-only">
@@ -33,7 +33,7 @@ export function StickySocialBar() {
         >
         {socials.map(({ label, href, action, icon: Icon }) => {
           const className =
-            "social-cell group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-black/10 last:border-r-0 focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-zinc-400/60 md:aspect-auto md:h-[5.5rem] md:max-h-[5.5rem] md:px-3 md:py-2.5";
+            "social-cell group relative flex aspect-square w-full min-w-0 items-center justify-center border-r border-white/12 last:border-r-0 focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white/50 md:aspect-auto md:h-[5.5rem] md:max-h-[5.5rem] md:px-3 md:py-2.5";
           const icon = (
             <span className="social-icon-shell" aria-hidden>
               <Icon className="social-icon shrink-0" aria-hidden />
