@@ -6,10 +6,10 @@ import { StickySocialBar } from "./components/StickySocialBar";
 export default function Home() {
   return (
     <>
-      <main id="main-content" className="flex min-h-0 flex-1 flex-col bg-black">
+      <main id="main-content" className="flex min-h-0 flex-1 flex-col overflow-hidden bg-black">
         <Hero />
         <section
-          className="border-t border-white/10 px-6 py-12 md:px-10 md:py-16"
+          className="hidden border-t border-white/10 px-6 py-12 md:block md:px-10 md:py-16"
           aria-labelledby="start-here"
         >
           <div className="mx-auto max-w-6xl">

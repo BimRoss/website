@@ -352,6 +352,7 @@ body::after {
 /* Mobile: product list scroll — thin, low-contrast bar (desktop uses overflow-visible) */
 .products-scroll {
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 @media (max-width: 767px) {

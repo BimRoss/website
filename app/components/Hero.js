@@ -30,7 +30,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative flex min-h-0 flex-1 flex-col justify-start bg-black px-5 pt-6 pb-4 md:min-h-dvh md:justify-center md:px-10 md:py-8 md:pb-8"
+      className="relative flex min-h-0 flex-1 flex-col justify-start overflow-hidden bg-black px-5 pt-6 pb-4 md:min-h-dvh md:justify-center md:px-10 md:py-8 md:pb-8"
       aria-labelledby="hero-heading"
     >
       <div className="fixed inset-0 z-0">
@@ -42,9 +42,9 @@ export function Hero() {
       />
 
       <div className="pointer-events-none relative z-10 mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col md:block md:flex-none">
-        <div className="hero-reveal flex min-h-0 flex-1 flex-col gap-6 md:h-auto md:flex-none md:flex-row md:items-center md:justify-between md:gap-12 md:gap-y-8 lg:gap-16">
+        <div className="hero-reveal flex min-h-0 flex-1 flex-col gap-5 md:h-auto md:flex-none md:flex-row md:items-center md:justify-between md:gap-12 md:gap-y-8 lg:gap-16">
           <div
-            className="pointer-events-auto min-w-0 max-w-2xl shrink-0 text-left max-md:cursor-pointer max-md:active:opacity-[0.92] max-md:transition-opacity md:flex md:min-h-[16rem] md:flex-col md:justify-center lg:max-w-3xl lg:min-h-[17rem]"
+            className="pointer-events-auto min-w-0 max-w-2xl text-left max-md:min-h-0 max-md:cursor-pointer max-md:active:opacity-[0.92] max-md:transition-opacity md:flex md:min-h-[16rem] md:shrink-0 md:flex-col md:justify-center lg:max-w-3xl lg:min-h-[17rem]"
             onClick={(e) => {
               if (
                 typeof window !== "undefined" &&
@@ -81,14 +81,14 @@ export function Hero() {
                 imRoss
               </span>
             </h1>
-            <p className="mt-6 max-w-3xl font-sans text-base leading-relaxed text-zinc-300 md:mt-8 md:text-lg md:leading-relaxed lg:text-xl">
+            <p className="mt-5 max-w-3xl font-sans text-[15px] leading-6 text-zinc-300 md:mt-8 md:text-lg md:leading-relaxed lg:text-xl">
               {siteDescription}
             </p>
           </div>
 
           <nav
             aria-label="Products and links"
-            className="products-scroll products-reveal pointer-events-auto flex min-h-0 w-full flex-1 flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
+            className="products-scroll products-reveal pointer-events-auto flex min-h-[12rem] w-full flex-none flex-col gap-4 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:min-h-0 md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
           >
             {productCTAs.map((cta) => {
               const ctaClass = productCtaClassName();
