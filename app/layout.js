@@ -2,7 +2,12 @@ import { IBM_Plex_Sans, Syne } from "next/font/google";
 import Script from "next/script";
 
 import { JsonLd } from "./components/JsonLd";
-import { buildRootJsonLd, metaDescription, ogDescription } from "./data/site";
+import {
+  buildRootJsonLd,
+  metaDescription,
+  ogDescription,
+  siteTitle,
+} from "./data/site";
 import { ToastProvider } from "./components/ToastProvider";
 import "./globals.css";
 
@@ -22,7 +27,6 @@ const ibmPlex = IBM_Plex_Sans({
 
 const siteUrl = "https://bimross.com";
 const siteName = "BimRoss";
-const siteTitle = "BimRoss - Company as code";
 const ogImagePath = "/opengraph-image";
 
 const rootJsonLd = buildRootJsonLd();
