@@ -5,7 +5,7 @@ import { socials } from "../data/socials";
 import { EmailSocialLink } from "./EmailSocialLink";
 import { useSiteToast } from "./ToastProvider";
 
-const CALL_TOAST_MESSAGE = "email founder instead";
+const CALL_TOAST_MESSAGE = "email us instead!";
 
 /**
  * Mobile: square cells (height = column width). Desktop (md+): row (5.5rem) + cell padding.

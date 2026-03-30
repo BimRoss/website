@@ -21,7 +21,7 @@ export function ToastProvider({ children }) {
       {children}
       <Toaster
         className="bim-sonner"
-        theme="light"
+        theme="dark"
         position="top-center"
         expand
         visibleToasts={5}

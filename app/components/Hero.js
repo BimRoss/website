@@ -7,10 +7,10 @@ import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 import { siteDescription } from "../data/site";
 
-/** Translucent black glass CTAs — no white highlight sheen */
+/** Sharp rectangular CTAs — black glass (translucent + blur) */
 function productCtaClassName() {
   return [
-    "hero-cta product-cta inline-flex min-h-[48px] min-w-[11rem] items-center justify-center px-8 py-3.5",
+    "product-cta inline-flex min-h-[48px] min-w-[11rem] items-center justify-center px-8 py-3.5",
     "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50",
     "transform-gpu focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/35",
     "md:min-h-[52px] md:min-w-[14rem] md:px-12 md:py-5",
@@ -64,7 +64,7 @@ export function Hero() {
             }}
           >
             <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
-              Happy automations · company-as-code
+              Company as code
             </p>
             <h1
               id="hero-heading"

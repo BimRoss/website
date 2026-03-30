@@ -5,14 +5,14 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "Building the first trillion-dollar, single-person LLC with AI. It wasn't possible, now it is. BimRoss focuses on company-as-code, leveraging the lessons learned from infrastructure-as-code and taking it one step further. With a focus on Bittensor, BimRoss is positioned to scale revenue, exposure, and intelligence with one human.";
+  "Building the first trillion-dollar, single-person LLC with AI. We build company-as-code, outputting everything from consumer products to Bittensor subnets.  BimRoss only has one human, allowing us to grow every day, and iterate at optimal speed.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "Building the first trillion-dollar, single-person LLC with AI. Company-as-code beyond infrastructure-as-code; Bittensor; scaling revenue, exposure, and intelligence with one human.";
+  "Building the first trillion-dollar, single-person LLC with AI. Company-as-code from consumer products to Bittensor subnets. One human; grow every day, iterate at optimal speed.";
 
 export const ogDescription =
-  "Trillion-dollar single-person LLC with AI: company-as-code from IaC lessons; Bittensor; one human scaling revenue, exposure, and intelligence.";
+  "Trillion-dollar single-person LLC with AI: company-as-code from products to Bittensor subnets; one human, growing every day and iterating at optimal speed.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -84,7 +84,7 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "Building the first trillion-dollar, single-person LLC with AI — company-as-code beyond infrastructure-as-code; Bittensor; one human scaling revenue, exposure, and intelligence.",
+    "Building the first trillion-dollar, single-person LLC with AI — company-as-code from consumer products to Bittensor subnets; one human, growing every day and iterating at optimal speed.",
   e2eDefinition:
     "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
