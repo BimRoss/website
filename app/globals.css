@@ -635,6 +635,19 @@ body::after {
   }
 }
 
+@media (max-width: 767px) {
+  /* Taller mobile dock row: icons scale up slightly with the strip */
+  .social-icon {
+    width: clamp(1.4rem, 4.2vw, 2.15rem);
+    height: clamp(1.4rem, 4.2vw, 2.15rem);
+  }
+
+  .social-icon-shell .social-icon--soundcloud {
+    width: clamp(1.5rem, 4.5vw, 2.3rem);
+    height: clamp(1.5rem, 4.5vw, 2.3rem);
+  }
+}
+
 @media (min-width: 768px) {
   /* Desktop footer strip (5.5rem row): icon caps sized for the shorter bar */
   .social-icon {
