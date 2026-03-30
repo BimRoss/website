@@ -23,8 +23,8 @@
 - Brand voice: **happy automations** — a Bim Ross / Bob Ross play on words (simple, calm, reliable automation).
 
 ## Mission
-- One goal: become the first trillion-dollar, single-person LLC — made possible by AI.
-- Thesis: **company-as-code** — distributed infrastructure, agentic backends, self-improving UIs, with a focus on Bittensor.
+- Building the first trillion-dollar, single-person LLC with AI. It wasn't possible, now it is.
+- Thesis: **company-as-code** — lessons from infrastructure-as-code, taken one step further; with a focus on Bittensor, scaling revenue, exposure, and intelligence with one human.
 
 ## Focus (themes)
 - Bittensor and subnet operations
@@ -35,6 +35,8 @@
 - E2E also means encoding execution intelligence into reusable agent rules and automation.
 
 ## Related properties
+- https://github.com/BimRoss/ — GitHub organization
+- https://github.com/BimRoss/cursor-rules — Cursor rules / how we work (public)
 - https://subnetsignal.com — Subnet Signal (live)
 - https://getinvoicepilot.com — Invoice Pilot (coming soon)
 - https://grantfoster.dev — Founder; Thread Pilot (coming soon)

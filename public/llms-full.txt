@@ -1,7 +1,7 @@
 # BimRoss Full Context
 
 ## Company
-BimRoss LLC is a founder-led single-person company. The stated goal is to become the first trillion-dollar, single-person LLC — a category that was not credible before AI; the bet is that company-as-code (distributed infrastructure, agentic backends, self-improving UIs, Bittensor-native operations) makes that possible.
+BimRoss LLC is a founder-led single-person company. Building the first trillion-dollar, single-person LLC with AI. It wasn't possible, now it is. The bet is company-as-code — lessons from infrastructure-as-code, taken further — with a focus on Bittensor and scaling revenue, exposure, and intelligence with one human.
 
 ## What we do
 - Design and operate Bittensor-related infrastructure and miners where applicable.
@@ -13,7 +13,7 @@ BimRoss LLC is a founder-led single-person company. The stated goal is to become
 - **Happy automations** — a Bim Ross / Bob Ross play on words: calm, reliable automation instead of noisy complexity.
 
 ## Mission framing
-- **Company-as-code** — proving that one operator can wield company-scale leverage when the stack is automated, observable, and honest under pressure.
+- **Company-as-code** — extending infrastructure-as-code so one operator can wield company-scale leverage when the stack is automated, observable, and honest under pressure.
 
 ## Public websites
 - Main site: https://bimross.com
@@ -22,6 +22,8 @@ BimRoss LLC is a founder-led single-person company. The stated goal is to become
 - Profile JSON: https://bimross.com/profile.json
 - Projects JSON: https://bimross.com/projects.json
 - Short LLM summary: https://bimross.com/llms.txt
+- GitHub org: https://github.com/BimRoss/
+- Cursor rules (how we work): https://github.com/BimRoss/cursor-rules
 - Subnet Signal: https://subnetsignal.com
 - Invoice Pilot: https://getinvoicepilot.com (coming soon)
 - Thread Pilot: https://grantfoster.dev (coming soon; see also founder profile)

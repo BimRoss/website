@@ -1,21 +1,7 @@
-import {
-  DiscordIcon,
-  EmailIcon,
-  PhoneIcon,
-  TelegramIcon,
-  TwitterXIcon,
-  YouTubeIcon,
-} from "./socialIcons";
+import { EmailIcon, GitHubIcon, PhoneIcon } from "./socialIcons";
 
 export const socials = [
-  { label: "X", href: "https://twitter.com/geeeeeeemoney", icon: TwitterXIcon },
-  { label: "Telegram", href: "https://t.me/geeeemoney", icon: TelegramIcon },
-  {
-    label: "Discord",
-    href: "https://discordapp.com/users/449222160687300608",
-    icon: DiscordIcon,
-  },
-  { label: "YouTube", href: "https://www.youtube.com/@geeeeemoney", icon: YouTubeIcon },
+  { label: "GitHub", href: "https://github.com/BimRoss/", icon: GitHubIcon },
   {
     label: "Email",
     href: "mailto:grant@bimross.com",

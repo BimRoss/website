@@ -6,15 +6,7 @@ export function SiteFooter() {
       className="relative z-10 shrink-0 border-t border-white/10 bg-gradient-to-b from-black/[0.16] via-black/[0.1] to-transparent px-5 py-2.5 backdrop-blur-sm backdrop-saturate-110 md:px-10 md:py-3"
     >
       <p className="text-center font-sans text-[10px] text-zinc-500 md:text-xs">
-        © {year} BimRoss LLC. All rights reserved.{" "}
-        <a
-          href="https://github.com/BimRoss"
-          className="text-zinc-400 underline-offset-2 hover:text-zinc-300 hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        © {year} BimRoss LLC. All rights reserved.
       </p>
     </div>
   );

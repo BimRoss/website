@@ -7,20 +7,25 @@ import NetworkBackdrop from "./NetworkBackdrop";
 import { useSiteToast } from "./ToastProvider";
 import { siteDescription } from "../data/site";
 
-/** Light frosted glass CTAs — same chip pattern as grantfoster.dev */
+/** Translucent black glass CTAs — no white highlight sheen */
 function productCtaClassName() {
   return [
     "hero-cta product-cta inline-flex min-h-[48px] min-w-[11rem] items-center justify-center px-8 py-3.5",
     "font-display text-sm font-semibold uppercase tracking-[0.18em] text-zinc-50",
-    "transform-gpu focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/45",
+    "transform-gpu focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/35",
     "md:min-h-[52px] md:min-w-[14rem] md:px-12 md:py-5",
   ].join(" ");
 }
 
 const productCTAs = [
+  { kind: "link", label: "GitHub", href: "https://github.com/BimRoss/" },
   { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
-  { kind: "toast", label: "Invoice Pilot", message: "Coming soon" },
   { kind: "toast", label: "Thread Pilot", message: "Coming soon" },
+  {
+    kind: "link",
+    label: "How We Do It",
+    href: "https://github.com/BimRoss/cursor-rules",
+  },
   { kind: "link", label: "Founder", href: "https://grantfoster.dev" },
 ];
 
@@ -30,7 +35,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative flex min-h-0 flex-1 flex-col justify-start overflow-hidden bg-black px-5 pt-6 pb-4 md:min-h-dvh md:justify-center md:px-10 md:py-8 md:pb-8"
+      className="relative w-full shrink-0 overflow-hidden bg-black px-5 py-6 md:px-10 md:py-8"
       aria-labelledby="hero-heading"
     >
       <div className="fixed inset-0 z-0">
@@ -41,10 +46,10 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="pointer-events-none relative z-10 mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col md:block md:flex-none">
-        <div className="hero-reveal flex min-h-0 flex-1 flex-col gap-5 md:h-auto md:flex-none md:flex-row md:items-center md:justify-between md:gap-12 md:gap-y-8 lg:gap-16">
+      <div className="pointer-events-none relative z-10 mx-auto w-full max-w-6xl">
+        <div className="hero-reveal flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-12 md:gap-y-8 lg:gap-16">
           <div
-            className="pointer-events-auto min-w-0 max-w-2xl text-left max-md:min-h-0 max-md:cursor-pointer max-md:active:opacity-[0.92] max-md:transition-opacity md:flex md:min-h-[16rem] md:shrink-0 md:flex-col md:justify-center lg:max-w-3xl lg:min-h-[17rem]"
+            className="pointer-events-auto min-w-0 max-w-2xl text-left max-md:cursor-pointer max-md:active:opacity-[0.92] max-md:transition-opacity md:flex md:shrink-0 md:flex-col md:justify-center lg:max-w-3xl"
             onClick={(e) => {
               if (
                 typeof window !== "undefined" &&
@@ -92,9 +97,11 @@ export function Hero() {
           >
             {productCTAs.map((cta) => {
               const ctaClass = productCtaClassName();
+              const shellKey =
+                cta.kind === "toast" ? cta.label : `${cta.label}-${cta.href}`;
               if (cta.kind === "toast") {
                 return (
-                  <div key={cta.label} className="product-cta-shell">
+                  <div key={shellKey} className="product-cta-shell">
                     <button
                       type="button"
                       onClick={() => showToast(cta.message)}
@@ -106,7 +113,7 @@ export function Hero() {
                 );
               }
               return (
-                <div key={cta.href} className="product-cta-shell">
+                <div key={shellKey} className="product-cta-shell">
                   <a
                     href={cta.href}
                     target="_blank"

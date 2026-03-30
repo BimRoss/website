@@ -5,14 +5,14 @@ export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
 export const siteDescription =
-  "BimRoss has one goal — become the first trillion-dollar, single-person LLC. It wasn't possible — it now is with AI. We build distributed infrastructure, agentic-powered backend systems, and self-improving UIs. With a focus on Bittensor, BimRoss is positioned to prove the concept of company-as-code.";
+  "Building the first trillion-dollar, single-person LLC with AI. It wasn't possible, now it is. BimRoss focuses on company-as-code, leveraging the lessons learned from infrastructure-as-code and taking it one step further. With a focus on Bittensor, BimRoss is positioned to scale revenue, exposure, and intelligence with one human.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "BimRoss aims to prove company-as-code: trillion-dollar, single-person LLC leverage via AI — Bittensor, distributed infra, agentic backends, self-improving UIs.";
+  "Building the first trillion-dollar, single-person LLC with AI. Company-as-code beyond infrastructure-as-code; Bittensor; scaling revenue, exposure, and intelligence with one human.";
 
 export const ogDescription =
-  "Trillion-dollar single-person LLC ambition: distributed infrastructure, agentic backends, self-improving UIs, and Bittensor — company-as-code.";
+  "Trillion-dollar single-person LLC with AI: company-as-code from IaC lessons; Bittensor; one human scaling revenue, exposure, and intelligence.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -84,7 +84,7 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "Become the first trillion-dollar, single-person LLC — company-as-code with AI.",
+    "Building the first trillion-dollar, single-person LLC with AI — company-as-code beyond infrastructure-as-code; Bittensor; one human scaling revenue, exposure, and intelligence.",
   e2eDefinition:
     "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
