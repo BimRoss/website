@@ -69,7 +69,7 @@ export function Hero() {
             </p>
             <h1
               id="hero-heading"
-              className="font-display mt-3 flex flex-row flex-wrap items-end gap-x-2 gap-y-1 sm:mt-7 sm:flex-nowrap sm:gap-x-3 md:gap-x-4"
+              className="font-display mt-3 flex flex-row flex-wrap items-end gap-x-1 gap-y-1 sm:mt-7 sm:flex-nowrap sm:gap-x-1.5 md:gap-x-2"
             >
               <span className="sr-only">BimRoss</span>
               <Image

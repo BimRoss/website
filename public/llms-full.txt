@@ -16,7 +16,7 @@ BimRoss LLC is a founder-led single-person company. Building the first trillion-
 - **Company-as-code** — extending infrastructure-as-code so one operator can wield company-scale leverage when the stack is automated, observable, and honest under pressure.
 
 ## Public websites
-- Main site: https://bimross.com (canonical browser title: BimRoss — Bittensor, AI & company-as-code)
+- Main site: https://bimross.com (canonical browser title: BimRoss | Company as code)
 - About: https://bimross.com/about
 - Projects: https://bimross.com/projects
 - Profile JSON: https://bimross.com/profile.json

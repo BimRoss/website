@@ -17,7 +17,7 @@
 
 ## Identity
 - Name: BimRoss LLC
-- Public site title (HTML metadata / Open Graph / Twitter): BimRoss — Bittensor, AI & company-as-code
+- Public site title (HTML metadata / Open Graph / Twitter): BimRoss | Company as code
 - Domain: bimross.com
 - Founder: Grant Foster (https://grantfoster.dev)
 - Contact: grant@bimross.com
