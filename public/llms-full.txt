@@ -25,6 +25,7 @@ BimRoss LLC is a founder-led single-person company. Building the first trillion-
 - GitHub org: https://github.com/BimRoss/
 - Cursor rules (how we work): https://github.com/BimRoss/cursor-rules
 - Subnet Signal: https://subnetsignal.com
+- Subnet Signal X (X Agent): https://x.com/subnet_signal
 - Invoice Pilot: https://getinvoicepilot.com (coming soon)
 - Thread Pilot: https://grantfoster.dev (coming soon; see also founder profile)
 - Founder profile: https://grantfoster.dev

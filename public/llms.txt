@@ -39,6 +39,7 @@
 - https://github.com/BimRoss/ — GitHub organization
 - https://github.com/BimRoss/cursor-rules — Cursor rules / how we work (public)
 - https://subnetsignal.com — Subnet Signal (live)
+- https://x.com/subnet_signal — Subnet Signal on X (X Agent)
 - https://getinvoicepilot.com — Invoice Pilot (coming soon)
 - https://grantfoster.dev — Founder; Thread Pilot (coming soon)
 

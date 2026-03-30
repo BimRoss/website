@@ -26,8 +26,10 @@ const pillars = [
     title: "Ecosystem intelligence",
     body:
       "Subnet Signal surfaces subnet-wide signals—attention, sentiment, and activity—so you can see what the market is pricing before the narrative catches up.",
-    href: "https://subnetsignal.com",
-    hrefLabel: "Open Subnet Signal",
+    links: [
+      { href: "https://subnetsignal.com", label: "Open Subnet Signal" },
+      { href: "https://x.com/subnet_signal", label: "X Agent" },
+    ],
   },
 ];
 
@@ -66,16 +68,29 @@ export function ProductPillars() {
               <p className="mt-4 flex-1 font-sans text-sm leading-relaxed text-zinc-400 md:text-base">
                 {pillar.body}
               </p>
-              {pillar.href ? (
-                <a
-                  href={pillar.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-1 font-sans text-sm font-medium text-zinc-200 underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
-                >
-                  {pillar.hrefLabel}
-                </a>
-              ) : null}
+              {(() => {
+                const links =
+                  pillar.links ??
+                  (pillar.href
+                    ? [{ href: pillar.href, label: pillar.hrefLabel }]
+                    : []);
+                if (!links.length) return null;
+                return (
+                  <div className="mt-6 flex flex-col gap-2">
+                    {links.map((link) => (
+                      <a
+                        key={`${pillar.id}-${link.href}`}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-sans text-sm font-medium text-zinc-200 underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                );
+              })()}
             </li>
           ))}
         </ul>

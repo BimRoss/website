@@ -19,6 +19,7 @@ const sameAs = [
     typeof entry.href === "string" && /^https?:\/\//.test(entry.href) ? [entry.href] : [],
   ),
   "https://subnetsignal.com",
+  "https://x.com/subnet_signal",
   "https://getinvoicepilot.com",
   "https://grantfoster.dev",
 ];
