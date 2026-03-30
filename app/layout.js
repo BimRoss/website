@@ -22,7 +22,7 @@ const ibmPlex = IBM_Plex_Sans({
 
 const siteUrl = "https://bimross.com";
 const siteName = "BimRoss";
-const siteTitle = "BimRoss — Bittensor, AI & company-as-code";
+const siteTitle = "BimRoss - Company as code";
 const ogImagePath = "/opengraph-image";
 
 const rootJsonLd = buildRootJsonLd();
