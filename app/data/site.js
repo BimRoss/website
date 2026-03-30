@@ -4,6 +4,9 @@ export const SITE_URL = "https://bimross.com";
 export const SITE_NAME = "BimRoss";
 export const ORG_NAME = "BimRoss LLC";
 
+/** Default HTML `<title>`, Open Graph, and Twitter card title — keep in sync with `/llms.txt` and `siteProfile.siteTitle`. */
+export const siteTitle = "BimRoss — Bittensor, AI & company-as-code";
+
 export const siteDescription =
   "Building the first trillion-dollar, single-person LLC with AI. We build company-as-code, outputting everything from consumer products to Bittensor subnets.  BimRoss only has one human, allowing us to grow every day, and iterate at optimal speed.";
 
@@ -53,6 +56,7 @@ export const siteProfile = {
   type: "Organization",
   name: ORG_NAME,
   brand: SITE_NAME,
+  siteTitle,
   url: SITE_URL,
   description: siteDescription,
   email: "grant@bimross.com",
@@ -104,7 +108,7 @@ export function buildRootJsonLd() {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
-        name: SITE_NAME,
+        name: siteTitle,
         description: siteDescription,
         inLanguage: "en-US",
         publisher: { "@id": `${SITE_URL}/#organization` },

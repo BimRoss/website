@@ -6,9 +6,12 @@ import { StickySocialBar } from "./components/StickySocialBar";
 export default function Home() {
   return (
     <>
-      <main id="main-content" className="flex min-h-0 flex-1 flex-col overflow-hidden bg-black">
-        {/* Fills viewport minus footer; centers hero block in that band (not dead-center of full screen). */}
-        <div className="flex min-h-0 flex-1 flex-col justify-center">
+      <main
+        id="main-content"
+        className="flex w-full flex-none flex-col bg-black md:min-h-0 md:flex-1 md:overflow-hidden"
+      >
+        {/* Desktop: fills viewport minus footer and vertically centers hero. Mobile: stack from top; page scrolls. */}
+        <div className="flex flex-col max-md:justify-start md:min-h-0 md:flex-1 md:justify-center">
           <Hero />
         </div>
         <section

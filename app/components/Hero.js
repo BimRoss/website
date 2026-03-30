@@ -20,6 +20,7 @@ function productCtaClassName() {
 const productCTAs = [
   { kind: "link", label: "GitHub", href: "https://github.com/BimRoss/" },
   { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
+  { kind: "link", label: "X Agent", href: "https://x.com/subnet_signal" },
   { kind: "toast", label: "Thread Pilot", message: "Coming soon" },
   {
     kind: "link",
@@ -35,7 +36,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full shrink-0 overflow-hidden bg-black px-5 py-6 md:px-10 md:py-8"
+      className="relative w-full shrink-0 overflow-x-hidden overflow-y-visible bg-black px-5 pt-2.5 pb-6 md:px-10 md:py-8"
       aria-labelledby="hero-heading"
     >
       <div className="fixed inset-0 z-0">
@@ -68,7 +69,7 @@ export function Hero() {
             </p>
             <h1
               id="hero-heading"
-              className="font-display mt-5 flex flex-row flex-wrap items-end gap-x-2 gap-y-1 sm:mt-7 sm:flex-nowrap sm:gap-x-3 md:gap-x-4"
+              className="font-display mt-3 flex flex-row flex-wrap items-end gap-x-2 gap-y-1 sm:mt-7 sm:flex-nowrap sm:gap-x-3 md:gap-x-4"
             >
               <span className="sr-only">BimRoss</span>
               <Image
@@ -93,7 +94,7 @@ export function Hero() {
 
           <nav
             aria-label="Products and links"
-            className="products-scroll products-reveal pointer-events-auto flex min-h-[11rem] max-h-[17rem] w-full flex-none flex-col gap-3 overflow-y-auto overscroll-y-contain pb-1 sm:max-w-md md:h-auto md:max-h-none md:min-h-0 md:w-auto md:flex-none md:shrink-0 md:items-end md:overflow-visible md:gap-5 md:pb-0"
+            className="products-scroll products-reveal pointer-events-auto flex w-full flex-col gap-3 pb-1 sm:max-w-md md:h-auto md:w-auto md:shrink-0 md:items-end md:gap-5 md:pb-0"
           >
             {productCTAs.map((cta) => {
               const ctaClass = productCtaClassName();
