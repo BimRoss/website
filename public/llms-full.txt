@@ -1,7 +1,7 @@
 # BimRoss Full Context
 
 ## Company
-BimRoss LLC is a founder-led single-person company. Building the world's first trillion-dollar company, with one human. BimRoss asks: what if company was code? In the world of AI, we are making it so. If you thought OpenClaw got fast adoption, just listen to our initial testimonials.
+BimRoss LLC is a founder-led single-person company. Building the world's first trillion-dollar company with one human. How? Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.
 
 ## What we do
 - Design and operate Bittensor-related infrastructure and miners where applicable.

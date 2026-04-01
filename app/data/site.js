@@ -8,14 +8,14 @@ export const ORG_NAME = "BimRoss LLC";
 export const siteTitle = "BimRoss | Company as code";
 
 export const siteDescription =
-  "Building the world's first trillion-dollar company, with one human. BimRoss asks: what if company was code? In the world of AI, we are making it so. If you thought OpenClaw got fast adoption, just listen to our initial testimonials.";
+  "Building the world's first trillion-dollar company with one human. How? Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "Building the world's first trillion-dollar company, with one human. What if company was code? In the AI era, BimRoss is making it so—hear our initial testimonials.";
+  "Building the world's first trillion-dollar company with one human. How? Company as code. Read our testimonials.";
 
 export const ogDescription =
-  "World's first trillion-dollar company, one human. What if company was code? BimRoss is making it real in the AI era—if OpenClaw surprised you with adoption, hear our initial testimonials.";
+  "Trillion-dollar company, one human. Company as code. If OpenClaw surprised you with adoption, read our testimonials.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -89,7 +89,7 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "Building the world's first trillion-dollar company, with one human — what if company was code? In the world of AI, BimRoss is making it so; if OpenClaw got fast adoption, hear our initial testimonials.",
+    "Building the world's first trillion-dollar company with one human. How? Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.",
   e2eDefinition:
     "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
