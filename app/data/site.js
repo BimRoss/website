@@ -8,14 +8,14 @@ export const ORG_NAME = "BimRoss LLC";
 export const siteTitle = "BimRoss | Company as code";
 
 export const siteDescription =
-  "Building the first trillion-dollar, single-person LLC with AI. We build company-as-code, outputting everything from consumer products to Bittensor subnets.  BimRoss only has one human, allowing us to grow every day, and iterate at optimal speed.";
+  "Building the world's first trillion-dollar company, with one human. BimRoss asks: what if company was code? In the world of AI, we are making it so. If you thought OpenClaw got fast adoption, just listen to our initial testimonials.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "Building the first trillion-dollar, single-person LLC with AI. Company-as-code from consumer products to Bittensor subnets. One human; grow every day, iterate at optimal speed.";
+  "Building the world's first trillion-dollar company, with one human. What if company was code? In the AI era, BimRoss is making it so—hear our initial testimonials.";
 
 export const ogDescription =
-  "Trillion-dollar single-person LLC with AI: company-as-code from products to Bittensor subnets; one human, growing every day and iterating at optimal speed.";
+  "World's first trillion-dollar company, one human. What if company was code? BimRoss is making it real in the AI era—if OpenClaw surprised you with adoption, hear our initial testimonials.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -89,7 +89,7 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "Building the first trillion-dollar, single-person LLC with AI — company-as-code from consumer products to Bittensor subnets; one human, growing every day and iterating at optimal speed.",
+    "Building the world's first trillion-dollar company, with one human — what if company was code? In the world of AI, BimRoss is making it so; if OpenClaw got fast adoption, hear our initial testimonials.",
   e2eDefinition:
     "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
