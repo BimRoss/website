@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import NetworkBackdrop from "./NetworkBackdrop";
-import { useSiteToast } from "./ToastProvider";
 import { siteDescription } from "../data/site";
 
 /** Sharp rectangular CTAs — black glass (translucent + blur) */
@@ -17,21 +16,17 @@ function productCtaClassName() {
   ].join(" ");
 }
 
-const productCTAs = [
-  { kind: "link", label: "GitHub", href: "https://github.com/BimRoss/" },
-  { kind: "link", label: "Subnet Signal", href: "https://subnetsignal.com" },
-  { kind: "link", label: "X Agent", href: "https://x.com/subnet_signal" },
-  { kind: "toast", label: "Thread Pilot", message: "Coming soon" },
+const heroLinks = [
+  { label: "GitHub", href: "https://github.com/BimRoss/" },
+  { label: "Make a Company", href: "https://makeacompany.ai" },
   {
-    kind: "link",
     label: "How We Do It",
     href: "https://github.com/BimRoss/cursor-rules",
   },
-  { kind: "link", label: "Founder", href: "https://grantfoster.dev" },
+  { label: "Founder", href: "https://grantfoster.dev" },
 ];
 
 export function Hero() {
-  const { showToast } = useSiteToast();
   const networkRef = useRef(null);
 
   return (
@@ -93,28 +88,13 @@ export function Hero() {
           </div>
 
           <nav
-            aria-label="Products and links"
+            aria-label="Site links"
             className="products-scroll products-reveal pointer-events-auto flex w-full flex-col gap-3 pb-1 sm:max-w-md md:h-auto md:w-auto md:shrink-0 md:items-end md:gap-5 md:pb-0"
           >
-            {productCTAs.map((cta) => {
+            {heroLinks.map((cta) => {
               const ctaClass = productCtaClassName();
-              const shellKey =
-                cta.kind === "toast" ? cta.label : `${cta.label}-${cta.href}`;
-              if (cta.kind === "toast") {
-                return (
-                  <div key={shellKey} className="product-cta-shell">
-                    <button
-                      type="button"
-                      onClick={() => showToast(cta.message)}
-                      className={ctaClass}
-                    >
-                      {cta.label}
-                    </button>
-                  </div>
-                );
-              }
               return (
-                <div key={shellKey} className="product-cta-shell">
+                <div key={`${cta.label}-${cta.href}`} className="product-cta-shell">
                   <a
                     href={cta.href}
                     target="_blank"

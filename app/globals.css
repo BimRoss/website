@@ -760,15 +760,6 @@ body::after {
   .products-reveal > .product-cta-shell:nth-child(4) {
     animation-delay: 0.96s;
   }
-  .products-reveal > .product-cta-shell:nth-child(5) {
-    animation-delay: 1.16s;
-  }
-  .products-reveal > .product-cta-shell:nth-child(6) {
-    animation-delay: 1.32s;
-  }
-  .products-reveal > .product-cta-shell:nth-child(7) {
-    animation-delay: 1.46s;
-  }
 }
 
 @media (min-width: 768px) {
