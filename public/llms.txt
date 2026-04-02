@@ -25,7 +25,7 @@
 
 ## Mission
 - Building the world's first trillion-dollar company with one human.
-- How? Company as code.
+- Company as code.
 - If you thought OpenClaw got fast adoption, just read our testimonials.
 
 ## Focus (themes)
