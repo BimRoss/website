@@ -51,6 +51,22 @@ Repository variable:
 |----------|-------|
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-HV51NLXWKD` |
 
+### GA setup contract
+
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` must exist as a GitHub **repository variable**.
+- The frontend Docker image bakes `NEXT_PUBLIC_*` values at `npm run build` time. If GA changes, ship a new tagged image (`v*`) so GitOps rolls a rebuilt frontend.
+- Tagged releases fail fast if the GA variable is missing.
+
+Verify what users are actually getting:
+
+```bash
+python - <<'PY'
+import urllib.request
+html = urllib.request.urlopen('https://bimross.com', timeout=15).read().decode('utf-8', 'ignore')
+print('googletagmanager.com/gtag/js?id=G-HV51NLXWKD' in html)
+PY
+```
+
 - Push to `master`: build check runs (image tag `build`).
 - Push a `v*` tag (e.g. `v1.2.3`): pushes semver + `latest` to Docker Hub, then bumps `geeemoney/bimross-website` in [rancher-admin](https://github.com/bimross/rancher-admin) `admin/apps/bimross-website/deployment.yaml` so Fleet picks up the release.
 
