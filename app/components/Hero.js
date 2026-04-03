@@ -18,10 +18,9 @@ function productCtaClassName() {
 
 const heroLinks = [
   { label: "GitHub", href: "https://github.com/BimRoss/" },
-  { label: "Make a Company", href: "https://makeacompany.ai" },
   {
     label: "How We Do It",
-    href: "https://github.com/BimRoss/cursor-rules",
+    href: "https://makeacompany.ai",
   },
   { label: "Founder", href: "https://grantfoster.dev" },
 ];
