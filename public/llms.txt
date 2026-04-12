@@ -24,7 +24,7 @@
 - Brand voice: **happy automations** — a Bim Ross / Bob Ross play on words (simple, calm, reliable automation).
 
 ## Mission
-- Building the world's first trillion-dollar company with one human.
+- Building the world's first billion-dollar company with one human.
 - Company as code.
 - If you thought OpenClaw got fast adoption, just read our testimonials.
 

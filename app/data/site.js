@@ -8,14 +8,14 @@ export const ORG_NAME = "BimRoss LLC";
 export const siteTitle = "BimRoss | Company as code";
 
 export const siteDescription =
-  "Building the world's first trillion-dollar company with one human. Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.";
+  "Building the world's first billion-dollar company with one human. Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "Building the world's first trillion-dollar company with one human. Company as code. Read our testimonials.";
+  "Building the world's first billion-dollar company with one human. Company as code. Read our testimonials.";
 
 export const ogDescription =
-  "Trillion-dollar company, one human. Company as code. If OpenClaw surprised you with adoption, read our testimonials.";
+  "Billion-dollar company, one human. Company as code. If OpenClaw surprised you with adoption, read our testimonials.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
@@ -89,7 +89,7 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "Building the world's first trillion-dollar company with one human. Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.",
+    "Building the world's first billion-dollar company with one human. Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.",
   e2eDefinition:
     "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
