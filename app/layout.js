@@ -84,7 +84,6 @@ export const metadata = {
     title: siteTitle,
     description: ogDescription,
     images: [ogImagePath],
-    creator: "@subnet_signal",
   },
   robots: {
     index: true,
