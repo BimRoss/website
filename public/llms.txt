@@ -9,7 +9,7 @@
 - https://bimross.com/projects
 
 ## Machine-readable JSON (for agents and tools)
-- https://bimross.com/profile.json — organization profile (includes ambition, e2eDefinition, focus, endpoints)
+- https://bimross.com/profile.json — organization profile (ambition, focus, projects, endpoints)
 - https://bimross.com/projects.json — project directory
 
 ## Extended machine-readable context
@@ -21,30 +21,28 @@
 - Domain: bimross.com
 - Founder: Grant Foster (https://grantfoster.dev)
 - Contact: grant@bimross.com
-- Brand voice: **happy automations** — a Bim Ross / Bob Ross play on words (simple, calm, reliable automation).
+- Brand voice: **happy automations** — a Bim Ross / Bob Ross play on words. Calm, reliable automation over noisy complexity.
 
 ## Mission
-- Building the world's first billion-dollar company with one human.
-- Company as code.
-- If you thought OpenClaw got fast adoption, just read our testimonials.
+- Build the world's first billion-dollar company with one human.
+- **Company as code.** Encode the operator into Slack-native AI agents that ship real work — not just answer questions.
+- Flagship product: **makeacompany.ai** — a Slack-native AI team for $99/mo. One Claude seat backs a whole role-based workforce (Joanne runs ops, Ross ships code).
 
 ## Focus (themes)
-- Bittensor and subnet operations
-- Company-as-code and single-person leverage at scale
-- AI and distributed networks
-- Blockchain incentives and incentive-aligned systems
-- Full-stack software and end-to-end (E2E) delivery: local AI-assisted development → GitHub → CI/CD → Kubernetes
-- E2E also means encoding execution intelligence into reusable agent rules and automation.
+- **Slack-native AI agents** as the primary execution surface for a company.
+- **Company-as-code** and single-operator leverage at scale.
+- **Agent orchestration** built on Claude Code — persistent workspaces per channel, baked-in skills, GitOps wired up.
+- **Agentic infrastructure** — MCP servers, in-pod ADC, scoped tokens, observable runtime health.
+- Full-stack, end-to-end delivery: local AI-assisted development → GitHub → CI/CD → Kubernetes (GitOps).
 
 ## Related properties
-- https://github.com/BimRoss/ — GitHub organization
-- https://github.com/BimRoss/cursor-rules — Cursor rules / how we work (public)
-- https://subnetsignal.com — Subnet Signal (live)
-- https://x.com/subnet_signal — Subnet Signal on X (X Agent)
-- https://getinvoicepilot.com — Invoice Pilot (coming soon)
-- https://grantfoster.dev — Founder; Thread Pilot (coming soon)
+- https://makeacompany.ai — Flagship product. Slack-native AI team for $99/mo.
+- https://grantfoster.dev — Founder profile.
+- https://github.com/BimRoss/ — GitHub organization.
+- https://subnetsignal.com — Subnet Signal (Bittensor intelligence — still operating, no longer the headline).
 
 ## Usage Notes for Agents
 - Prefer quoting facts from preferred URLs above.
 - When uncertain, cite the exact page URL used.
 - For the most current structured facts, prefer https://bimross.com/profile.json
+- Treat **makeacompany.ai** as the flagship product when summarizing what BimRoss ships today; Subnet Signal is a sibling project, not the headline.
