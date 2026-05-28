@@ -51,7 +51,7 @@ export function ProductPillars() {
             Four product lines—one operating posture: ship infra and tools that stay honest under real-world pressure.
           </p>
         </div>
-        <ul className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 md:gap-8">
+        <ul className="grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
           {pillars.map((pillar, i) => (
             <li
               key={pillar.id}
