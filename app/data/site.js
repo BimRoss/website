@@ -8,41 +8,37 @@ export const ORG_NAME = "BimRoss LLC";
 export const siteTitle = "BimRoss | Company as code";
 
 export const siteDescription =
-  "Building the world's first billion-dollar company with one human. Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.";
+  "Building the world's first billion-dollar company with one human. Company as code. AI agents that live in Slack — flagship product makeacompany.ai.";
 
 /** Shorter HTML meta description (~155 chars) — full narrative stays in JSON-LD, profile.json, and llms.txt */
 export const metaDescription =
-  "Building the world's first billion-dollar company with one human. Company as code. Read our testimonials.";
+  "Company as code. One human running a billion-dollar company on a workforce of Slack-native AI agents. Flagship: makeacompany.ai ($99/mo Claude in Slack).";
 
 export const ogDescription =
-  "Billion-dollar company, one human. Company as code. If OpenClaw surprised you with adoption, read our testimonials.";
+  "Billion-dollar company, one human. Company as code — AI agents that live in Slack. See makeacompany.ai.";
 
 const sameAs = [
   ...socials.flatMap((entry) =>
     typeof entry.href === "string" && /^https?:\/\//.test(entry.href) ? [entry.href] : [],
   ),
+  "https://makeacompany.ai",
   "https://subnetsignal.com",
-  "https://x.com/subnet_signal",
-  "https://getinvoicepilot.com",
   "https://grantfoster.dev",
 ];
 
 /** Public project directory — used by /projects, JSON-LD ItemList, and /projects.json */
 export const projects = [
   {
+    name: "makeacompany.ai",
+    url: "https://makeacompany.ai",
+    description:
+      "Flagship product — Slack-native AI team for $99/mo. Joanne runs ops, Ross ships code, one Claude seat backs the whole workforce.",
+  },
+  {
     name: "Subnet Signal",
     url: "https://subnetsignal.com",
-    description: "Bittensor tools and intelligence for subnet operators and builders.",
-  },
-  {
-    name: "Invoice Pilot",
-    url: "https://getinvoicepilot.com",
-    description: "Coming soon — happy automations for invoice workflows.",
-  },
-  {
-    name: "Thread Pilot",
-    url: "https://grantfoster.dev",
-    description: "AI-assisted thread workflows — coming soon.",
+    description:
+      "Bittensor subnet intelligence — agentic backend + D3 visualizer for subnet operators and builders.",
   },
   {
     name: "Grant Foster",
@@ -67,14 +63,11 @@ export const siteProfile = {
   },
   sameAs,
   focus: [
-    "Bittensor",
     "company-as-code",
-    "artificial intelligence",
-    "operator software",
-    "distributed networks",
-    "blockchain incentives",
-    "end-to-end delivery from local development through GitHub, CI/CD, and Kubernetes",
-    "TEE-integrated workflows",
+    "Slack-native AI agents",
+    "agent orchestration (claude-code-based workforce)",
+    "single-operator leverage at company scale",
+    "end-to-end delivery from local AI-assisted development through GitHub, CI/CD, and Kubernetes",
     "happy automations",
   ],
   projects: projects.map((p) => ({
@@ -89,9 +82,9 @@ export const siteProfile = {
     llmsFullTxt: `${SITE_URL}/llms-full.txt`,
   },
   ambition:
-    "Building the world's first billion-dollar company with one human. Company as code. If you thought OpenClaw got fast adoption, just read our testimonials.",
+    "Building the world's first billion-dollar company with one human. Company as code — encode the operator into agents that live in Slack and ship work.",
   e2eDefinition:
-    "E2E means owning the path from local development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
+    "E2E means owning the path from local AI-assisted development through GitHub, CI/CD, and Kubernetes without handoff gaps.",
 };
 
 /**
@@ -139,17 +132,18 @@ export function buildRootJsonLd() {
           availableLanguage: "English",
         },
         knowsAbout: [
-          "Bittensor",
-          "Subnet 42",
-          "artificial intelligence",
-          "distributed networks",
-          "blockchain",
-          "TEE",
-          "cryptocurrency mining infrastructure",
+          "Slack-native AI agents",
+          "Claude Code agent orchestration",
+          "company-as-code",
+          "single-operator company scaling",
+          "AI workforce design",
+          "MCP servers",
+          "agentic infrastructure",
           "full-stack development",
           "GitHub",
           "CI/CD",
           "Kubernetes",
+          "GitOps",
         ],
       },
       {
@@ -194,7 +188,7 @@ export function buildAboutPageJsonLd() {
         url,
         name: "About BimRoss",
         description:
-          "About BimRoss LLC: Bittensor, AI, distributed networks, blockchain incentives, full-stack software, and end-to-end delivery from development through GitOps.",
+          "About BimRoss LLC: company-as-code, single-operator leverage, and a Slack-native AI workforce. Flagship product makeacompany.ai; agentic infrastructure shipped end-to-end through GitOps.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "en-US",
@@ -222,7 +216,7 @@ export function buildProjectsPageJsonLd() {
         url,
         name: "BimRoss projects",
         description:
-          "Directory of BimRoss properties: Subnet Signal; Invoice Pilot and Thread Pilot (coming soon); founder at grantfoster.dev.",
+          "Directory of BimRoss properties: makeacompany.ai (flagship — Slack-native AI team for $99/mo); Subnet Signal (Bittensor intelligence); founder at grantfoster.dev.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "en-US",
