@@ -58,7 +58,7 @@ export function Hero() {
               );
             }}
           >
-            <p className="border-l-2 border-white/35 pl-4 font-mono text-[10px] font-medium leading-relaxed tracking-[0.2em] text-zinc-300 sm:text-xs sm:tracking-[0.18em]">
+            <p className="border-l-2 border-white/35 pl-4 font-mono text-xs font-medium leading-relaxed tracking-[0.14em] text-zinc-300 sm:tracking-[0.18em]">
               Company as code
             </p>
             <h1
@@ -69,19 +69,19 @@ export function Hero() {
               <Image
                 src="/logo.png"
                 alt="BimRoss wordmark"
-                width={522}
-                height={582}
+                width={2016}
+                height={2138}
                 priority
                 className="block h-16 w-auto shrink-0 self-end object-contain object-bottom sm:h-20 md:h-28 lg:h-32"
               />
               <span
-                className="-ml-1 self-end bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text font-display text-5xl font-semibold leading-none tracking-tight text-transparent sm:-ml-1.5 md:-ml-2 md:text-7xl lg:-ml-2.5 lg:text-8xl"
+                className="-ml-1 self-end bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text font-display text-5xl font-semibold leading-none tracking-tight text-transparent sm:-ml-1.5 sm:text-6xl md:-ml-2 md:text-7xl lg:-ml-2.5 lg:text-8xl"
                 aria-hidden
               >
                 imRoss
               </span>
             </h1>
-            <p className="mt-5 max-w-3xl font-sans text-[15px] leading-6 text-zinc-300 md:mt-8 md:text-lg md:leading-relaxed lg:text-xl">
+            <p className="mt-5 max-w-xs font-sans text-[15px] leading-6 text-zinc-300 sm:max-w-lg md:mt-8 md:max-w-3xl md:text-lg md:leading-relaxed lg:text-xl">
               {siteDescription}
             </p>
           </div>
