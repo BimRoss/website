@@ -20,17 +20,6 @@ const pillars = [
     body:
       "Invoice Pilot will turn quotes and time into clean invoices and follow-ups. Coming soon — same happy-automations posture as the rest of the stack.",
   },
-  {
-    id: "subnet-signal",
-    label: "Subnet Signal",
-    title: "Ecosystem intelligence",
-    body:
-      "Subnet Signal surfaces subnet-wide signals—attention, sentiment, and activity—so you can see what the market is pricing before the narrative catches up.",
-    links: [
-      { href: "https://subnetsignal.com", label: "Open Subnet Signal" },
-      { href: "https://x.com/subnet_signal", label: "X Agent" },
-    ],
-  },
 ];
 
 export function ProductPillars() {
@@ -48,10 +37,10 @@ export function ProductPillars() {
             What we build
           </h2>
           <p className="mt-3 font-sans text-base leading-relaxed text-zinc-400 md:text-lg">
-            Four product lines—one operating posture: ship infra and tools that stay honest under real-world pressure.
+            Three product lines—one operating posture: ship infra and tools that stay honest under real-world pressure.
           </p>
         </div>
-        <ul className="grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
+        <ul className="grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {pillars.map((pillar, i) => (
             <li
               key={pillar.id}
