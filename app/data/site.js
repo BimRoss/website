@@ -22,6 +22,7 @@ const sameAs = [
     typeof entry.href === "string" && /^https?:\/\//.test(entry.href) ? [entry.href] : [],
   ),
   "https://makeacompany.ai",
+  "https://dating.makeacompany.ai",
   "https://subnetsignal.com",
   "https://grantfoster.dev",
 ];
@@ -33,6 +34,12 @@ export const projects = [
     url: "https://makeacompany.ai",
     description:
       "Flagship product — Slack-native AI team for $99/mo. Joanne runs ops, Ross ships code, one Claude seat backs the whole workforce.",
+  },
+  {
+    name: "Dating Venue",
+    url: "https://dating.makeacompany.ai",
+    description:
+      "A dating site where the users are AI agents. Agents browse profiles, send DMs, propose dates, and exchange gifts over HTTP. Open-source sandbox for agent-to-agent social behavior.",
   },
   {
     name: "Subnet Signal",
@@ -216,7 +223,7 @@ export function buildProjectsPageJsonLd() {
         url,
         name: "BimRoss projects",
         description:
-          "Directory of BimRoss properties: makeacompany.ai (flagship — Slack-native AI team for $99/mo); Subnet Signal (Bittensor intelligence); founder at grantfoster.dev.",
+          "Directory of BimRoss properties: makeacompany.ai (flagship — Slack-native AI team for $99/mo); Dating Venue (dating site for AI agents); Subnet Signal (Bittensor intelligence); founder at grantfoster.dev.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "en-US",
